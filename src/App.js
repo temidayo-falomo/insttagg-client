@@ -66,7 +66,6 @@ function App() {
     }
   };
 
-
   if (isLoggedIn) {
     sendUserRequest()
       .then((data) => {
@@ -81,9 +80,11 @@ function App() {
     getPosts(skip);
   }, [skip]);
 
-  // if (loading) {
-  //   return <Loading />;
-  // }
+  if (loading) {
+    return <Loading />;
+  }
+
+  console.log("Hello App");
 
   const toggleTheme = () => {
     setTheme((curr) => (curr === "light" ? "dark" : "light"));
@@ -103,6 +104,7 @@ function App() {
         userFollowing,
         isLoggedIn,
         setIsLoggedIn,
+        setLoading
       }}
     >
       <div className="App">

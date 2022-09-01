@@ -16,7 +16,7 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState();
-  const { userInfo, setIsLoggedIn } = useContext(AppContext);
+  const { userInfo, setIsLoggedIn, setLoading } = useContext(AppContext);
 
   let navigate = useNavigate();
 
@@ -28,7 +28,11 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await axios
-      .post("https://insta-clone-temidayo.herokuapp.com/api/login", userData, config)
+      .post(
+        "https://insta-clone-temidayo.herokuapp.com/api/login",
+        userData,
+        config
+      )
       .then(() => navigate("/"))
       .then(() => window.location.reload())
       .catch((err) => setError(err.response.data.message));
@@ -39,7 +43,10 @@ function Login() {
     //   navigate("/");
     // }
     setIsLoggedIn(false);
+    setLoading(false);
   }, []);
+
+  console.log("Hello Login");
 
   return (
     <StyledLogin onSubmit={handleSubmit}>
