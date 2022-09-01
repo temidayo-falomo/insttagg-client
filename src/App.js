@@ -80,9 +80,9 @@ function App() {
     getPosts(skip);
   }, [skip]);
 
-  if (loading) {
-    return <Loading />;
-  }
+  // if (loading) {
+  //   return <Loading />;
+  // }
 
   console.log("Hello App");
 
