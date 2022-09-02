@@ -36,7 +36,7 @@ function AllUsers() {
       {userInfo && (
         <>
           <Leftbar />
-          <div>
+          <div style={{ width: "100%", overflow: "auto" }}>
             <Navbar />
             <div style={{ height: "100vh", overflow: "auto" }}>
               <div className="friend-cards">

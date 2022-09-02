@@ -14,7 +14,7 @@ function Bookmarks() {
       <Leftbar />
       <>
         {userInfo && bookmarks && (
-          <div>
+          <div style={{ width: "100%", overflow: "auto" }}>
             <Navbar />
             <div className="bookmarks">
               {bookmarks.map((data, index) => {

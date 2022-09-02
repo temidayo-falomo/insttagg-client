@@ -51,7 +51,7 @@ export const StyledNavbar = styled.div`
     background-color: #fff;
     width: 400px;
     height: 200px;
-    border: 1px #AEC1D9 solid;
+    border: 1px #aec1d9 solid;
     border-radius: 10px;
     right: 0.8rem;
     top: 4.5rem;
@@ -73,5 +73,16 @@ export const StyledNavbar = styled.div`
     /* .user:hover {
       border-bottom: 1px black solid;
     } */
+  }
+
+  @media (max-width: 700px) {
+    flex-direction: column;
+    gap: 1rem;
+    padding-top: 1rem;
+
+    input {
+      width: 100%;
+      min-width: 100%;
+    }
   }
 `;

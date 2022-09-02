@@ -6,7 +6,6 @@ export const StyledAllUsers = styled.div`
   min-height: 100vh;
 
   .friend-cards {
-
     padding: 20px;
     display: flex;
     flex-wrap: wrap;
@@ -15,6 +14,10 @@ export const StyledAllUsers = styled.div`
     position: relative;
     padding-bottom: 4rem;
     justify-content: space-between;
-    
+    overflow: auto;
+  }
+
+  @media(max-width: 1030px) {
+    grid-template-columns: 50px auto;
   }
 `;

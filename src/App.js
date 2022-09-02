@@ -28,6 +28,7 @@ function App() {
   const [theme, setTheme] = useState("dark");
   const [userFollowing, setUserFollowing] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState();
+  const [toggledRightbar, setToggledRightbar] = useState(false);
 
   const sendUserRequest = async () => {
     const res = await axios
@@ -66,12 +67,11 @@ function App() {
     }
   };
 
-  useEffect(()=> {
+  useEffect(() => {
     setIsLoggedIn(true);
-  }, [])
+  }, []);
 
   useEffect(() => {
-
     if (isLoggedIn) {
       sendUserRequest()
         .then((data) => {
@@ -112,6 +112,8 @@ function App() {
         isLoggedIn,
         setIsLoggedIn,
         setLoading,
+        toggledRightbar,
+        setToggledRightbar
       }}
     >
       <div className="App">

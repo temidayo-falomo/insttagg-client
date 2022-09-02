@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 export const StyledMainContent = styled.div`
-  /* border: 2px gainsboro solid; */
   position: relative;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
   height: 100vh;
 
   ::-webkit-scrollbar {

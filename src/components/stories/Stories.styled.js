@@ -111,4 +111,12 @@ export const StyledStories = styled.div`
   .col p {
     font-weight: 500;
   }
+
+  @media(max-width: 1030px) {
+    .button-86 {
+      width: 90%;
+      min-width: 90%;
+    }
+  }
+
 `;

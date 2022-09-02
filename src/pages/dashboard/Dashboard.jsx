@@ -5,6 +5,7 @@ import Rightbar from "../../components/rightbar/Rightbar";
 import { AppContext } from "../../helper/Context";
 import { StyledDashboard } from "./Dashboard.styled";
 import { Link, useNavigate } from "react-router-dom";
+import ToggleRightbar from "../../components/toggle-right-bar-btn/ToggleRightbar";
 
 function Dashboard() {
   const { userInfo, bookmarks, setIsLoggedIn } = useContext(AppContext);
@@ -30,6 +31,7 @@ function Dashboard() {
           <Rightbar />
         </>
       )}
+      <ToggleRightbar />
     </StyledDashboard>
   );
 }

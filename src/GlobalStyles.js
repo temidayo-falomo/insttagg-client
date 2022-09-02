@@ -95,5 +95,14 @@ const GlobalStyle = createGlobalStyle`
     gap: .5rem;
   }
 
+  .none {
+    display: none !important;
+  }
+
+  .block {
+    display: block;
+  }
+
+
 `;
 export default GlobalStyle;

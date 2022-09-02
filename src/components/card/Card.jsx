@@ -229,7 +229,7 @@ function Card(props) {
                   } others`}
             </p>
           )}
-          <p>
+          <p style={{ display: "flex", alignItems: "center" }}>
             {likesArray.slice(0, 3).map((data, index) => {
               return (
                 <img

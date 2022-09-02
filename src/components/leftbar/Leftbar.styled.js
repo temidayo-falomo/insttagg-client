@@ -24,4 +24,8 @@ export const StyledLeftbar = styled.aside`
     color: orange;
     outline: orange;
   }
+
+  @media (max-width: 1030px) {
+    width: 50px;
+  }
 `;

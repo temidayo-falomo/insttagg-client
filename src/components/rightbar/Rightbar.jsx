@@ -7,7 +7,7 @@ import { StyledRightbar } from "./Rightbar.styled";
 
 function Rightbar() {
   const [showEdit, setShowEdit] = useState(false);
-  const { userInfo, setUserInfo } = useContext(AppContext);
+  const { userInfo, setUserInfo, toggledRightbar } = useContext(AppContext);
 
   const handleShowEdit = () => {
     setShowEdit(!showEdit);
@@ -16,7 +16,7 @@ function Rightbar() {
   return (
     <>
       {userInfo && (
-        <StyledRightbar>
+        <StyledRightbar className={!toggledRightbar ? "block" : "none"}>
           {showEdit ? (
             <EditInfo showEdit={showEdit} setShowEdit={setShowEdit} />
           ) : (

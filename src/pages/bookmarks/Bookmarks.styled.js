@@ -29,8 +29,12 @@ export const StyledBookmarks = styled.div`
     gap: 2rem;
     padding: 20px;
     padding-top: 2rem;
-    /* height: 92vh; */
     overflow: auto;
     height: 90vh;
+    position: relative;
+  }
+
+  @media(max-width: 1030px) {
+    grid-template-columns: 50px auto;
   }
 `;
