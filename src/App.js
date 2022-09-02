@@ -31,7 +31,7 @@ function App() {
 
   const sendUserRequest = async () => {
     const res = await axios
-      .get("https://insta-clone-temidayo.herokuapp.com/api/user", {
+      .get("https://stalwart-cajeta-e7411b.netlify.app/api/user", {
         withCredentials: true,
       })
       .catch((err) => console.log(err));
@@ -104,7 +104,7 @@ function App() {
         userFollowing,
         isLoggedIn,
         setIsLoggedIn,
-        setLoading
+        setLoading,
       }}
     >
       <div className="App">

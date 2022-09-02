@@ -29,7 +29,7 @@ function Login() {
     e.preventDefault();
     await axios
       .post(
-        "https://insta-clone-temidayo.herokuapp.com/api/login",
+        "https://stalwart-cajeta-e7411b.netlify.app/api/login",
         userData,
         config
       )
