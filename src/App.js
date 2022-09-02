@@ -31,7 +31,7 @@ function App() {
 
   const sendUserRequest = async () => {
     const res = await axios
-      .get("https://stalwart-cajeta-e7411b.netlify.app/api/user", {
+      .get("http://localhost:5600/api/user", {
         withCredentials: true,
       })
       .catch((err) => console.log(err));
@@ -66,15 +66,22 @@ function App() {
     }
   };
 
-  if (isLoggedIn) {
-    sendUserRequest()
-      .then((data) => {
-        setUserInfo(data.user);
-        setUserFollowing(data.user.following);
-        getUserBookmarks(data.user._id);
-      })
-      .catch((err) => console.log(err));
-  }
+  useEffect(()=> {
+    setIsLoggedIn(true);
+  }, [])
+
+  useEffect(() => {
+
+    if (isLoggedIn) {
+      sendUserRequest()
+        .then((data) => {
+          setUserInfo(data.user);
+          setUserFollowing(data.user.following);
+          getUserBookmarks(data.user._id);
+        })
+        .catch((err) => console.log(err));
+    }
+  }, [isLoggedIn]);
 
   useEffect(() => {
     getPosts(skip);
