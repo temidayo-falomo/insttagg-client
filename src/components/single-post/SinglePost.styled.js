@@ -78,7 +78,7 @@ export const StyledSinglePost = styled.div`
     }
 
     .comment-input {
-      position: absolute;
+      /* position: absolute; */
       left: 0;
       right: 0;
       bottom: 1rem;
@@ -102,6 +102,42 @@ export const StyledSinglePost = styled.div`
       border: none;
       outline: none;
       text-transform: capitalize;
+    }
+  }
+
+  @media (max-width: 1030px) {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    height: 90vh;
+    overflow: auto;
+
+    .comment-input {
+      position: static;
+    }
+
+    .users-comments {
+      overflow: hidden;
+      max-height: 200px;
+
+      ::-webkit-scrollbar {
+        width: 0em;
+      }
+    }
+
+    .post-left {
+      min-height: 50vh;
+      width: 100%;
+
+      .image {
+        width: 100%;
+        background-size: cover;
+      }
+    }
+
+    .post-right {
+      width: 100%;
+      margin-top: 1rem;
     }
   }
 `;

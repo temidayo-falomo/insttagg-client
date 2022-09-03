@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import GlobalStyle from "./GlobalStyles";
 import { AppContext } from "./helper/Context";
 import AddPost from "./pages/add-post/AddPost";
@@ -32,7 +32,7 @@ function App() {
 
   const sendUserRequest = async () => {
     const res = await axios
-      .get("http://localhost:5600/api/user", {
+      .get("https://insta-clone-temidayo.herokuapp.com/api/user", {
         withCredentials: true,
       })
       .catch((err) => console.log(err));
@@ -68,10 +68,6 @@ function App() {
   };
 
   useEffect(() => {
-    setIsLoggedIn(true);
-  }, []);
-
-  useEffect(() => {
     if (isLoggedIn) {
       sendUserRequest()
         .then((data) => {
@@ -90,8 +86,6 @@ function App() {
   // if (loading) {
   //   return <Loading />;
   // }
-
-  console.log("Hello App");
 
   const toggleTheme = () => {
     setTheme((curr) => (curr === "light" ? "dark" : "light"));
@@ -113,7 +107,7 @@ function App() {
         setIsLoggedIn,
         setLoading,
         toggledRightbar,
-        setToggledRightbar
+        setToggledRightbar,
       }}
     >
       <div className="App">

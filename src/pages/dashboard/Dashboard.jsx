@@ -12,11 +12,11 @@ function Dashboard() {
 
   let navigate = useNavigate();
 
-  useEffect(() => {
-    // if (!userInfo) {
-    //   navigate("/login");
-    // }
-  }, []);
+  // useEffect(() => {
+  //   // if (!userInfo) {
+  //   //   navigate("/login");
+  //   // }
+  // }, []);
 
   useEffect(() => {
     setIsLoggedIn(true);

@@ -7,7 +7,7 @@ import { StyledRightbar } from "./Rightbar.styled";
 
 function Rightbar() {
   const [showEdit, setShowEdit] = useState(false);
-  const { userInfo, setUserInfo, toggledRightbar } = useContext(AppContext);
+  const { userInfo, toggledRightbar } = useContext(AppContext);
 
   const handleShowEdit = () => {
     setShowEdit(!showEdit);

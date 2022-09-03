@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
 function AddPostForm() {
-  axios.defaults.withCredentials = false;
+  axios.defaults.withCredentials = true;
   const { userInfo } = useContext(AppContext);
 
   const [location, setLocation] = useState("Anywhere");

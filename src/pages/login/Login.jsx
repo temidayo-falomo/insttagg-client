@@ -13,6 +13,7 @@ const config = {
 
 function Login() {
   axios.defaults.withCredentials = true;
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState();
@@ -29,7 +30,7 @@ function Login() {
     e.preventDefault();
     await axios
       .post(
-        "http://localhost:5600/api/login",
+        "https://insta-clone-temidayo.herokuapp.com/api/login",
         userData,
         config
       )
@@ -45,8 +46,6 @@ function Login() {
     setIsLoggedIn(false);
     setLoading(false);
   }, []);
-
-  console.log("Hello Login");
 
   return (
     <StyledLogin onSubmit={handleSubmit}>
