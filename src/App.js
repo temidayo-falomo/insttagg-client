@@ -32,7 +32,7 @@ function App() {
 
   const sendUserRequest = async () => {
     const res = await axios
-      .get("https://insta-clone-temidayo.herokuapp.com/api/user", {
+      .get("http://localhost:5600/api/user", {
         withCredentials: true,
       })
       .catch((err) => console.log(err));
@@ -43,9 +43,7 @@ function App() {
 
   const getPosts = async (param) => {
     await axios
-      .get(
-        `https://insta-clone-temidayo.herokuapp.com/api/posts/?page=1&limit=${param}`
-      )
+      .get(`http://localhost:5600/api/posts/?page=1&limit=10`)
       .then((res) => {
         setGeneralPosts(res.data.post);
         setLoading(false);

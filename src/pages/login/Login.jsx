@@ -30,7 +30,7 @@ function Login() {
     e.preventDefault();
     await axios
       .post(
-        "https://insta-clone-temidayo.herokuapp.com/api/login",
+        "http://localhost:5600/api/login",
         userData,
         config
       )
