@@ -31,7 +31,7 @@ function SinglePost() {
     };
 
     axios
-      .put("http://localhost:5600/api/posts/like", likeData)
+      .put("https://insta-clone-temidayo.herokuapp.com/api/posts/like", likeData)
       .catch((err) => console.error(err));
     postInfo.likes.push(likeData);
 

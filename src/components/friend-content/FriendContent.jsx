@@ -15,7 +15,7 @@ function FriendContent() {
 
   const getFriend = async () => {
     await axios
-      .get(`http://localhost:5600/api/user/${id}`)
+      .get(`https://insta-clone-temidayo.herokuapp.com/api/user/${id}`)
       .then((res) => setFriendObject(res.data.user))
       .catch((err) => console.error(err));
   };
@@ -30,7 +30,7 @@ function FriendContent() {
       userToAddToUserId: friendObject._id,
     };
     axios
-      .put("http://localhost:5600/api/follow", data)
+      .put("https://insta-clone-temidayo.herokuapp.com/api/follow", data)
       .catch((err) => console.error(err));
     setUserInfo({ ...userInfo, following: [...userInfo.following, data] });
   };
@@ -41,7 +41,7 @@ function FriendContent() {
       currentUser: userInfo._id,
     };
     axios
-      .put("http://localhost:5600/api/unfollow", data)
+      .put("https://insta-clone-temidayo.herokuapp.com/api/unfollow", data)
       .catch((err) => console.error(err));
     let filtered = userInfo.following.filter(
       (val) => val.userToAddToUserId !== friendObject._id

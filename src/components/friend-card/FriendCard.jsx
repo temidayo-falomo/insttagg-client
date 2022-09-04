@@ -18,7 +18,7 @@ function FriendCard(props) {
       userToAddToUserId: props._id,
     };
     axios
-      .put("http://localhost:5600/api/follow", data)
+      .put("https://insta-clone-temidayo.herokuapp.com/api/follow", data)
       .catch((err) => console.error(err));
     setUserInfo({ ...userInfo, following: [...userInfo.following, data] });
   };
@@ -29,7 +29,7 @@ function FriendCard(props) {
       currentUser: userInfo._id,
     };
     axios
-      .put("http://localhost:5600/api/unfollow", data)
+      .put("https://insta-clone-temidayo.herokuapp.com/api/unfollow", data)
       .catch((err) => console.error(err));
     let filtered = userInfo.following.filter(
       (val) => val.userToAddToUserId !== props._id

@@ -44,7 +44,7 @@ function Card(props) {
     };
 
     axios
-      .post("http://localhost:5600/api/bookmarks/add-bookmark", bookmarkData)
+      .post("https://insta-clone-temidayo.herokuapp.com/api/bookmarks/add-bookmark", bookmarkData)
       .catch((err) => console.error(err));
     setClicked(true);
 
@@ -75,7 +75,7 @@ function Card(props) {
     };
 
     axios
-      .put("http://localhost:5600/api/posts/like", likeData)
+      .put("https://insta-clone-temidayo.herokuapp.com/api/posts/like", likeData)
       .catch((err) => console.error(err));
 
     setLikesArray([...likesArray, likeData]);
@@ -87,7 +87,7 @@ function Card(props) {
       postId: props._id,
     };
     axios
-      .put("http://localhost:5600/api/posts/unlike", likeData)
+      .put("https://insta-clone-temidayo.herokuapp.com/api/posts/unlike", likeData)
       .then((res) => console.log(res))
       .catch((err) => console.error(err));
 
@@ -101,7 +101,7 @@ function Card(props) {
 
   const handleDeletePost = () => {
     axios
-      .delete(`http://localhost:5600/api/posts/delete/${props._id}`)
+      .delete(`https://insta-clone-temidayo.herokuapp.com/api/posts/delete/${props._id}`)
       .catch((err) => console.error(err));
 
     let filtered = generalPosts.filter((val) => val._id !== props._id);
@@ -110,7 +110,7 @@ function Card(props) {
 
   const handleRemoveBookmark = (param) => {
     axios
-      .delete(`http://localhost:5600/api/bookmarks/remove-bookmark/${param}`)
+      .delete(`https://insta-clone-temidayo.herokuapp.com/api/bookmarks/remove-bookmark/${param}`)
       .catch((err) => console.error(err));
 
     let filtered = bookmarks.filter((item) => item._id !== props._id);
@@ -124,7 +124,7 @@ function Card(props) {
       };
 
       axios
-        .put(`http://localhost:5600/api/posts/edit-post/${props._id}`, newImage)
+        .put(`https://insta-clone-temidayo.herokuapp.com/api/posts/edit-post/${props._id}`, newImage)
         .catch((err) => console.log(err));
     } else {
     }

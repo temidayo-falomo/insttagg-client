@@ -46,7 +46,7 @@ function EditInfo(props) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     axios
-      .put(`http://localhost:5600/api/edit-user/${userInfo._id}`, userData)
+      .put(`https://insta-clone-temidayo.herokuapp.com/api/edit-user/${userInfo._id}`, userData)
       .then(() => props.setShowEdit(!props.showEdit))
       .catch((err) => console.error(err));
   };
