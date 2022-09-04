@@ -44,7 +44,7 @@ function SinglePost() {
       postId: postInfo._id,
     };
     axios
-      .put("http://localhost:5600/api/posts/unlike", likeData)
+      .put("https://insta-clone-temidayo.herokuapp.com/api/posts/unlike", likeData)
       .catch((err) => console.error(err));
 
     let filtered = likesArray.filter((item) => item.userId !== likeData.userId);
@@ -53,7 +53,7 @@ function SinglePost() {
 
   const getPostInfo = () => {
     axios
-      .get(`http://localhost:5600/api/posts/${id}`)
+      .get(`https://insta-clone-temidayo.herokuapp.com/api/posts/${id}`)
       .then((res) => {
         setPostInfo(res.data.post);
         setLikesArray(res.data.post.likes);
@@ -78,7 +78,7 @@ function SinglePost() {
     };
 
     axios
-      .put("http://localhost:5600/api/posts/comment", commentData)
+      .put("https://insta-clone-temidayo.herokuapp.com/api/posts/comment", commentData)
       .catch((err) => console.error(err));
 
     setCommentText("");
@@ -100,7 +100,7 @@ function SinglePost() {
     };
 
     axios
-      .post("http://localhost:5600/api/bookmarks/add-bookmark", bookmarkData)
+      .post("https://insta-clone-temidayo.herokuapp.com/api/bookmarks/add-bookmark", bookmarkData)
       .catch((err) => console.error(err));
 
     // bookmarks.push(bookmarkData);
@@ -124,7 +124,7 @@ function SinglePost() {
   const handleRemoveBookmark = () => {
     axios
       .delete(
-        `http://localhost:5600/api/bookmarks/remove-bookmark/${postInfo._id}`
+        `https://insta-clone-temidayo.herokuapp.com/api/bookmarks/remove-bookmark/${postInfo._id}`
       )
       .catch((err) => console.error(err));
 
