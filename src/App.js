@@ -106,6 +106,7 @@ function App() {
         setLoading,
         toggledRightbar,
         setToggledRightbar,
+        loading
       }}
     >
       <div className="App">
