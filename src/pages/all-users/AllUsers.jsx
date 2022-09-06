@@ -9,7 +9,7 @@ import Loading from "../loading/Loading";
 import { StyledAllUsers } from "./AllUsers.styled";
 
 function AllUsers() {
-  const { userInfo, setUserInfo } = useContext(AppContext);
+  const { userInfo, setUserInfo, setIsLoggedIn } = useContext(AppContext);
   const [allFriends, setAllFriends] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -25,6 +25,7 @@ function AllUsers() {
 
   useEffect(() => {
     getAllUsers();
+    setIsLoggedIn(true);
   }, []);
 
   if (loading) {
@@ -38,7 +39,13 @@ function AllUsers() {
           <Leftbar />
           <div style={{ width: "100%", overflow: "auto" }}>
             <Navbar />
-            <div style={{ height: "100vh", overflow: "auto" }}>
+            <div
+              style={{
+                height: "100vh",
+                overflow: "auto",
+                paddingBottom: "5rem",
+              }}
+            >
               <div className="friend-cards">
                 {allFriends.map((data) => {
                   return <FriendCard {...data} key={data._id} />;

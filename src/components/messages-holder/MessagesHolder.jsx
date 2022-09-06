@@ -7,6 +7,7 @@ import { FiSend } from "react-icons/fi";
 import Loading from "../../pages/loading/Loading";
 import { MdRefresh } from "react-icons/md";
 import { Link } from "react-router-dom";
+import { ImCancelCircle } from "react-icons/im";
 
 function MessagesHolder() {
   const { userInfo, userFollowing } = useContext(AppContext);
@@ -25,6 +26,7 @@ function MessagesHolder() {
 
   const [messageText, setMessageText] = useState("");
   const [loading, setLoading] = useState(true);
+  const [showBox, setShowBox] = useState(false);
 
   useEffect(() => {
     getMessages();
@@ -46,6 +48,7 @@ function MessagesHolder() {
     setClickedMessageId(param);
     setNumber(index);
     setClickedMessageName(param2);
+    setShowBox(true);
   };
 
   if (!userInfo.following[0].name) {
@@ -116,9 +119,13 @@ function MessagesHolder() {
         </div>
       </div>
 
-      <div className="right-div">
-        <div className="top-bar">
+      <div className={showBox ? "right-div" : "none"}>
+        <div className="top-bar row btw">
           <div className="row">To: {clickedMessageName}</div>
+          <ImCancelCircle
+            className="cancel"
+            onClick={() => setShowBox(false)}
+          />
         </div>
         <div className="texts-container">
           {textsArr.map((data, index) => {

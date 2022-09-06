@@ -4,9 +4,10 @@ import { StyledAddPostForm } from "./AddPostForm.styled";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import Loading from "../../pages/loading/Loading";
 
 function AddPostForm() {
-  axios.defaults.withCredentials = true;
+  axios.defaults.withCredentials = false;
   const { userInfo } = useContext(AppContext);
 
   const [location, setLocation] = useState("Anywhere");
@@ -98,11 +99,7 @@ function AddPostForm() {
         style={{ backgroundImage: `url(${selectedImage})` }}
       >
         <div className="choose">
-          <input
-            type="file"
-            // onChange={(e) => uploadImage(e.target.files)}
-            onChange={uploadImage}
-          />
+          <input type="file" onChange={uploadImage} />
         </div>
       </div>
 
@@ -123,8 +120,6 @@ function AddPostForm() {
             <h4>Write Some Stuff</h4>
           </div>
           <textarea
-            cols="30"
-            rows="10"
             required
             placeholder="Add a caption..."
             value={text}

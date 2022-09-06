@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledFriendContent = styled.div`
   overflow: auto;
-  height: 100vh;
+  width: auto;
 
   button {
     width: 120px;
@@ -20,7 +20,7 @@ export const StyledFriendContent = styled.div`
     /* background-image: url("https://media4.giphy.com/media/8oP12pJCHcwdkPL4dV/giphy.gif"); */
     background-repeat: no-repeat;
     background-size: cover;
-     background-color: black;
+    background-color: black;
   }
 
   .profile-picture {

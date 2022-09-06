@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Leftbar from "../../components/leftbar/Leftbar";
 import Navbar from "../../components/navbar/Navbar";
 import Rightbar from "../../components/rightbar/Rightbar";
@@ -8,10 +8,25 @@ import { ImCancelCircle } from "react-icons/im";
 import { Link } from "react-router-dom";
 import { AppContext } from "../../helper/Context";
 import { useContext } from "react";
+import Loading from "../loading/Loading";
 
 function PostById() {
-  const { userInfo, setUserInfo, bookmarks, setBookmarks } =
-    useContext(AppContext);
+  const {
+    userInfo,
+    setUserInfo,
+    bookmarks,
+    setIsLoggedIn,
+    loading,
+  } = useContext(AppContext);
+
+  useEffect(() => {
+    setIsLoggedIn(true);
+  }, []);
+
+  if (loading) {
+    return <Loading />;
+  }
+
   return (
     <StyledPostById>
       <Leftbar />

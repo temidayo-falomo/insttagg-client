@@ -28,14 +28,15 @@ function App() {
   const [theme, setTheme] = useState("dark");
   const [userFollowing, setUserFollowing] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState();
-  const [toggledRightbar, setToggledRightbar] = useState(false);
+  const [toggledRightbar, setToggledRightbar] = useState(true);
+  const [tokenError, setTokenError] = useState(false);
 
   const sendUserRequest = async () => {
     const res = await axios
       .get("https://insta-clone-temidayo.herokuapp.com/api/user", {
         withCredentials: true,
       })
-      .catch((err) => console.log(err));
+      .catch((err) => setTokenError(true));
 
     const data = await res.data;
     return data;
@@ -43,7 +44,9 @@ function App() {
 
   const getPosts = async (param) => {
     await axios
-      .get(`https://insta-clone-temidayo.herokuapp.com/api/posts/?page=1&limit=10`)
+      .get(
+        `https://insta-clone-temidayo.herokuapp.com/api/posts/?page=1&limit=${param}`
+      )
       .then((res) => {
         setGeneralPosts(res.data.post);
         setLoading(false);
@@ -61,12 +64,13 @@ function App() {
   const handleScroll = (e) => {
     const { offsetHeight, scrollTop, scrollHeight } = e.target;
     if (offsetHeight + scrollTop >= scrollHeight) {
-      setSkip(generalPosts.length + 5);
+      setSkip(generalPosts.length + 3);
+      console.log(skip);
     }
   };
 
   useEffect(() => {
-    if (isLoggedIn) {
+    if (isLoggedIn && !tokenError) {
       sendUserRequest()
         .then((data) => {
           setUserInfo(data.user);
@@ -89,6 +93,12 @@ function App() {
     setTheme((curr) => (curr === "light" ? "dark" : "light"));
   };
 
+  useEffect(() => {
+    if (window.innerWidth > 1030) {
+      setToggledRightbar(false);
+    }
+  }, []);
+
   return (
     <AppContext.Provider
       value={{
@@ -106,7 +116,7 @@ function App() {
         setLoading,
         toggledRightbar,
         setToggledRightbar,
-        loading
+        loading,
       }}
     >
       <div className="App">
@@ -128,6 +138,12 @@ function App() {
           <Route path="/logout" element={<Logout />} />
           <Route path="/anonymous" element={<AnonDashboard />} />
         </Routes>
+        {tokenError && (
+          <h1 style={{ margin: "auto" }}>
+            There appears to be issuse with signing you in. Please try login
+            again
+          </h1>
+        )}
       </div>
     </AppContext.Provider>
   );

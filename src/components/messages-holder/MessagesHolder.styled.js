@@ -68,7 +68,6 @@ export const StyledMessagesHolder = styled.div`
       button:hover {
         background-color: #000;
         color: #fff;
-        
       }
     }
 
@@ -80,7 +79,7 @@ export const StyledMessagesHolder = styled.div`
       align-items: center;
       justify-content: space-between;
       border-radius: 10px;
-      
+
       border: 1px gainsboro solid;
       cursor: pointer;
     }
@@ -97,6 +96,7 @@ export const StyledMessagesHolder = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    position: relative;
 
     .top-bar {
       height: 80px;
@@ -105,6 +105,11 @@ export const StyledMessagesHolder = styled.div`
       align-items: center;
       width: 100%;
       padding: 4%;
+
+      .cancel {
+        font-size: 1.5rem;
+        fill: orange;
+      }
     }
 
     .texts-container {
@@ -118,12 +123,17 @@ export const StyledMessagesHolder = styled.div`
       padding: 10px 20px;
       position: relative;
       overflow: scroll;
+      padding-bottom: 50px;
     }
 
     .bottom-input {
       border: 1px gainsboro solid;
+      /* min-height: 80px; */
       height: 50px;
       display: flex;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
 
       .row {
         width: 100%;
@@ -160,6 +170,37 @@ export const StyledMessagesHolder = styled.div`
       border-radius: 30px;
       background-color: #1982fc;
       color: #fff;
+    }
+  }
+
+  @media (max-width: 1010px) {
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+
+    .left-div {
+      min-width: 300px;
+
+      p {
+        font-size: 0.8rem;
+      }
+    }
+
+    .texts-container {
+      height: 100%;
+    }
+
+    .right-div {
+      border: 2px #1982fc solid;
+      position: absolute;
+      bottom: 1rem;
+      background-color: #fff;
+      width: 80%;
+      max-width: 500px;
+      min-width: 300px;
+      height: 80% !important;
+      border-radius: 20px;
+      overflow: hidden;
     }
   }
 `;

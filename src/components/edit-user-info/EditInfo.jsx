@@ -46,9 +46,22 @@ function EditInfo(props) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     axios
-      .put(`https://insta-clone-temidayo.herokuapp.com/api/edit-user/${userInfo._id}`, userData)
+      .put(
+        `https://insta-clone-temidayo.herokuapp.com/api/edit-user/${userInfo._id}`,
+        userData
+      )
       .then(() => props.setShowEdit(!props.showEdit))
       .catch((err) => console.error(err));
+
+    const newObj = {
+      ...userInfo,
+      avatar: avatar,
+      firstName: firstName,
+      lastName: lastName,
+      bio: bio,
+      profession: profession,
+    };
+    setUserInfo(newObj);
   };
 
   return (

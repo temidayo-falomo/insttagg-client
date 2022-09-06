@@ -1,11 +1,21 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import Leftbar from "../../components/leftbar/Leftbar";
 import Rightbar from "../../components/rightbar/Rightbar";
 import { AppContext } from "../../helper/Context";
+import Loading from "../loading/Loading";
 import { StyledLikes } from "./Likes.styled";
 
 function Likes() {
-  const { userInfo, setUserInfo } = useContext(AppContext);
+  const { userInfo, setUserInfo, setIsLoggedIn, loading } = useContext(AppContext);
+
+  useEffect(() => {
+    setIsLoggedIn(true);
+  }, []);
+
+  if (loading) {
+    return <Loading />;
+  }
+
 
   return (
     <>

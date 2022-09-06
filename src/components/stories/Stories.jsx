@@ -11,7 +11,7 @@ function Stories() {
       <h3>Your Stories</h3>
       <div className="row">
         <div className="col">
-          <Link className="circle" to="/story">
+          <Link className="circle" to="/add-post">
             <h2>+</h2>
           </Link>
           <span>Add Story</span>

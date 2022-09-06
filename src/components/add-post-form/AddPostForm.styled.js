@@ -48,6 +48,10 @@ export const StyledAddPostForm = styled.form`
     font-family: "lato";
   }
 
+  textarea {
+    height: 200px;
+  }
+
   .error {
     position: absolute;
     background-color: red;
@@ -94,6 +98,31 @@ export const StyledAddPostForm = styled.form`
 
     .btm {
       margin-top: 1rem;
+    }
+  }
+
+  @media (max-width: 1300px) {
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    min-height: 80vh;
+    max-width: 70%;
+    min-width: 350px;
+    margin: auto;
+    overflow-y: auto;
+
+    .image {
+      height: auto;
+      min-height: 40vh;
+      width: 100%;
+    }
+
+    .form-right {
+      width: 100%;
+    }
+
+    textarea {
+      height: 100px !important;
     }
   }
 `;

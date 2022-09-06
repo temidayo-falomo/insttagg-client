@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const StyledMessenger = styled.aside`
-  min-height: 90vh;
-  /* background-color: #1982fc; */
+  min-height: 100vh;
+  overflow: hidden;
 
   aside {
     position: absolute !important;
@@ -12,7 +12,6 @@ export const StyledMessenger = styled.aside`
     margin: 0 !important;
     padding: 20px !important;
     border-bottom: 1px gainsboro solid !important;
-    
   }
 
   ul {
@@ -25,5 +24,17 @@ export const StyledMessenger = styled.aside`
   .messenger-mid {
     display: grid;
     place-content: center;
+  }
+
+  @media (max-width: 500px) {
+    aside {
+      width: 100%;
+
+      ul {
+        gap: 1rem;
+        width: 100%;
+        justify-content: space-between;
+      }
+    }
   }
 `;

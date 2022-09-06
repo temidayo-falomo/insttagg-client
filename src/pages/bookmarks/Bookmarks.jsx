@@ -5,9 +5,19 @@ import Rightbar from "../../components/rightbar/Rightbar";
 import { StyledBookmarks } from "./Bookmarks.styled";
 import Card from "../../components/card/Card";
 import { AppContext } from "../../helper/Context";
+import Loading from "../loading/Loading";
 
 function Bookmarks() {
-  const { userInfo, bookmarks } = useContext(AppContext);
+  const { userInfo, bookmarks, loading, setIsLoggedIn } =
+    useContext(AppContext);
+
+  useEffect(() => {
+    setIsLoggedIn(true);
+  }, []);
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <StyledBookmarks>
