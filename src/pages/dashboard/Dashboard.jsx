@@ -9,20 +9,25 @@ import ToggleRightbar from "../../components/toggle-right-bar-btn/ToggleRightbar
 import Loading from "../loading/Loading";
 
 function Dashboard() {
-  const { userInfo, bookmarks, setIsLoggedIn, loading } =
+  const { userInfo, bookmarks, setIsLoggedIn, loading, tokenError } =
     useContext(AppContext);
 
   let navigate = useNavigate();
 
   // useEffect(() => {
-  //   // if (!userInfo) {
-  //   //   navigate("/login");
-  //   // }
+  //    if (!userInfo) {
+  //    navigate("/login");
+  //   }
   // }, []);
 
   useEffect(() => {
-    setIsLoggedIn(true);
-  }, []);
+    if (tokenError) {
+      navigate("/login");
+      setIsLoggedIn(false);
+    } else {
+      setIsLoggedIn(true);
+    }
+  }, [tokenError]);
 
   if (loading) {
     return <Loading />;

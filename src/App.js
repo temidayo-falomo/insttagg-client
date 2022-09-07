@@ -77,7 +77,7 @@ function App() {
           setUserFollowing(data.user.following);
           getUserBookmarks(data.user._id);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => setTokenError(true));
     }
   }, [isLoggedIn]);
 
@@ -99,6 +99,8 @@ function App() {
     }
   }, []);
 
+  console.log(tokenError);
+
   return (
     <AppContext.Provider
       value={{
@@ -117,6 +119,7 @@ function App() {
         toggledRightbar,
         setToggledRightbar,
         loading,
+        tokenError
       }}
     >
       <div className="App">
