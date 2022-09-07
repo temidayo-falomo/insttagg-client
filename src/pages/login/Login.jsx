@@ -41,9 +41,6 @@ function Login() {
   };
 
   useEffect(() => {
-    // if (userInfo) {
-    //   navigate("/");
-    // }
     setIsLoggedIn(false);
     setLoading(false);
   }, []);

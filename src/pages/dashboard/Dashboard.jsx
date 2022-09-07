@@ -8,7 +8,12 @@ import ToggleRightbar from "../../components/toggle-right-bar-btn/ToggleRightbar
 import Loading from "../loading/Loading";
 
 function Dashboard() {
-  const { userInfo, bookmarks, loading } = useContext(AppContext);
+  const { userInfo, bookmarks, loading, isLoggedIn, setIsLoggedIn } =
+    useContext(AppContext);
+
+  useEffect(() => {
+    setIsLoggedIn(true);
+  }, []);
 
   if (loading) {
     return <Loading />;

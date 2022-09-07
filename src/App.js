@@ -33,22 +33,23 @@ function App() {
 
   let navigate = useNavigate();
 
-  function getCookie(name) {
-    var match = document.cookie.match(
-      RegExp("(?:^|;\\s*)" + name + "=([^;]*)")
-    );
-    return match ? match[1] : null;
-  }
-
   const sendUserRequest = async () => {
     const res = await axios
       .get("https://insta-clone-temidayo.herokuapp.com/api/user", {
         withCredentials: true,
       })
-      .catch((err) => setTokenError(true));
+      .catch((err) => {
+        setTokenError(true);
+        navigate("/login");
+      });
 
     const data = await res.data;
-    return data;
+
+    if (data !== undefined) {
+      return data;
+    } else {
+      navigate("/login");
+    }
   };
 
   const getPosts = async (param) => {
@@ -79,7 +80,7 @@ function App() {
   };
 
   useEffect(() => {
-    if (isLoggedIn && getCookie("COOKIE_KEY")) {
+    if (isLoggedIn) {
       sendUserRequest()
         .then((data) => {
           setUserInfo(data.user);
@@ -97,15 +98,6 @@ function App() {
   useEffect(() => {
     if (window.innerWidth > 1030) {
       setToggledRightbar(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (!getCookie("COOKIE_KEY")) {
-      navigate("/login");
-      setIsLoggedIn(false);
-    } else {
-      setIsLoggedIn(true);
     }
   }, []);
 
@@ -128,7 +120,6 @@ function App() {
         setToggledRightbar,
         loading,
         tokenError,
-        getCookie,
       }}
     >
       <div className="App">
