@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import GlobalStyle from "./GlobalStyles";
 import { AppContext } from "./helper/Context";
 import AddPost from "./pages/add-post/AddPost";
@@ -30,6 +30,15 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState();
   const [toggledRightbar, setToggledRightbar] = useState(true);
   const [tokenError, setTokenError] = useState(false);
+
+  let navigate = useNavigate();
+
+  function getCookie(name) {
+    var match = document.cookie.match(
+      RegExp("(?:^|;\\s*)" + name + "=([^;]*)")
+    );
+    return match ? match[1] : null;
+  }
 
   const sendUserRequest = async () => {
     const res = await axios
@@ -70,7 +79,7 @@ function App() {
   };
 
   useEffect(() => {
-    if (isLoggedIn && !tokenError) {
+    if (isLoggedIn && getCookie("COOKIE_KEY")) {
       sendUserRequest()
         .then((data) => {
           setUserInfo(data.user);
@@ -85,21 +94,20 @@ function App() {
     getPosts(skip);
   }, [skip]);
 
-  // if (loading) {
-  //   return <Loading />;
-  // }
-
-  const toggleTheme = () => {
-    setTheme((curr) => (curr === "light" ? "dark" : "light"));
-  };
-
   useEffect(() => {
     if (window.innerWidth > 1030) {
       setToggledRightbar(false);
     }
   }, []);
 
-  console.log(tokenError);
+  useEffect(() => {
+    if (!getCookie("COOKIE_KEY")) {
+      navigate("/login");
+      setIsLoggedIn(false);
+    } else {
+      setIsLoggedIn(true);
+    }
+  }, []);
 
   return (
     <AppContext.Provider
@@ -119,7 +127,8 @@ function App() {
         toggledRightbar,
         setToggledRightbar,
         loading,
-        tokenError
+        tokenError,
+        getCookie,
       }}
     >
       <div className="App">

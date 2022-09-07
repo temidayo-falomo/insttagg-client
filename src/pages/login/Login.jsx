@@ -28,6 +28,7 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     await axios
       .post(
         "https://insta-clone-temidayo.herokuapp.com/api/login",

@@ -58,9 +58,9 @@ function SignUp() {
     }, 3000);
   };
 
-  if (userInfo) {
-    navigate("/");
-  }
+  // if (userInfo) {
+  //   navigate("/");
+  // }
 
   const handleGetRandomWord = () => {
     axios
