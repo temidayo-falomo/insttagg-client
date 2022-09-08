@@ -93,4 +93,12 @@ export const StyledCard = styled.div`
     background-color: #000;
     color: #fff;
   }
+
+  .liked {
+    color: red;
+  }
+
+  .bookmarked {
+    color: #1982fc;
+  }
 `;

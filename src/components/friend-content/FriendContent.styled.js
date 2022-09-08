@@ -12,12 +12,17 @@ export const StyledFriendContent = styled.div`
     color: #fff;
   }
 
+  button:hover {
+    border: 1px black solid;
+    background-color: transparent;
+    color: #000;
+  }
+
   .top-shadow {
     width: 100%;
     height: 300px;
     position: relative;
     margin-bottom: 6rem;
-    /* background-image: url("https://media4.giphy.com/media/8oP12pJCHcwdkPL4dV/giphy.gif"); */
     background-repeat: no-repeat;
     background-size: cover;
     background-color: black;

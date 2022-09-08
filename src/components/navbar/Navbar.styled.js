@@ -80,6 +80,11 @@ export const StyledNavbar = styled.div`
     gap: 1rem;
     padding-top: 1rem;
 
+    .users-dropdown {
+      top: 7rem;
+      width: 95%;
+    }
+
     input {
       width: 100%;
       min-width: 100%;

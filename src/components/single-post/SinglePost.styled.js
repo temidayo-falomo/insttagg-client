@@ -118,7 +118,8 @@ export const StyledSinglePost = styled.div`
 
     .users-comments {
       overflow: hidden;
-      max-height: 200px;
+      max-height: 120px;
+      min-height: 0;
 
       ::-webkit-scrollbar {
         width: 0em;

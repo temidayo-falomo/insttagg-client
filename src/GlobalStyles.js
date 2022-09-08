@@ -103,6 +103,10 @@ const GlobalStyle = createGlobalStyle`
     display: block;
   }
 
+  .pointer {
+    cursor: pointer;
+  }
+
   ::-webkit-scrollbar {
     width: 0;
   }

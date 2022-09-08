@@ -10,6 +10,7 @@ function FriendContent() {
   const [friendObject, setFriendObject] = useState();
   const [postObject, setPostObject] = useState();
   const { userInfo, setUserInfo } = useContext(AppContext);
+  const [userPosts, setUserPosts] = useState();
 
   const id = useParams().id;
 
@@ -50,13 +51,23 @@ function FriendContent() {
     setUserInfo({ ...userInfo, following: [...filtered] });
   };
 
+  const handleGetUserPosts = () => {
+    axios
+      .get(`http://localhost:5600/api/posts/user-posts/${id}`)
+      .then((res) => setUserPosts(res.data.posts))
+      .catch((err) => console.error(err));
+  };
+
   useEffect(() => {
     getFriend();
+    handleGetUserPosts();
   }, []);
 
   if (!friendObject) {
     return <Loading />;
   }
+
+  console.log(userPosts);
 
   return (
     <StyledFriendContent>
@@ -90,19 +101,15 @@ function FriendContent() {
               </div>
             )}
           </div>
-          {friendObject.posts && (
+          {userPosts && (
             <div className="cards">
-              {postObject && (
-                <>
-                  <Card
-                    image={postObject.avatar}
-                    avatar={postObject.avatar}
-                    postText={postObject.postText}
-                  />
-                </>
-              )}
+              {userPosts.map((data) => {
+                return <Card key={data._id} {...data} />;
+              })}
+               {userPosts.length === 0 && <h3>Nothing To See Here...</h3>}
             </div>
           )}
+         
         </>
       )}
     </StyledFriendContent>

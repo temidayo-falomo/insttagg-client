@@ -44,7 +44,10 @@ function Card(props) {
     };
 
     axios
-      .post("https://insta-clone-temidayo.herokuapp.com/api/bookmarks/add-bookmark", bookmarkData)
+      .post(
+        "https://insta-clone-temidayo.herokuapp.com/api/bookmarks/add-bookmark",
+        bookmarkData
+      )
       .catch((err) => console.error(err));
     setClicked(true);
 
@@ -75,7 +78,10 @@ function Card(props) {
     };
 
     axios
-      .put("https://insta-clone-temidayo.herokuapp.com/api/posts/like", likeData)
+      .put(
+        "https://insta-clone-temidayo.herokuapp.com/api/posts/like",
+        likeData
+      )
       .catch((err) => console.error(err));
 
     setLikesArray([...likesArray, likeData]);
@@ -87,7 +93,10 @@ function Card(props) {
       postId: props._id,
     };
     axios
-      .put("https://insta-clone-temidayo.herokuapp.com/api/posts/unlike", likeData)
+      .put(
+        "https://insta-clone-temidayo.herokuapp.com/api/posts/unlike",
+        likeData
+      )
       .then((res) => console.log(res))
       .catch((err) => console.error(err));
 
@@ -101,7 +110,9 @@ function Card(props) {
 
   const handleDeletePost = () => {
     axios
-      .delete(`https://insta-clone-temidayo.herokuapp.com/api/posts/delete/${props._id}`)
+      .delete(
+        `https://insta-clone-temidayo.herokuapp.com/api/posts/delete/${props._id}`
+      )
       .catch((err) => console.error(err));
 
     let filtered = generalPosts.filter((val) => val._id !== props._id);
@@ -110,7 +121,9 @@ function Card(props) {
 
   const handleRemoveBookmark = (param) => {
     axios
-      .delete(`https://insta-clone-temidayo.herokuapp.com/api/bookmarks/remove-bookmark/${param}`)
+      .delete(
+        `https://insta-clone-temidayo.herokuapp.com/api/bookmarks/remove-bookmark/${param}`
+      )
       .catch((err) => console.error(err));
 
     let filtered = bookmarks.filter((item) => item._id !== props._id);
@@ -124,7 +137,10 @@ function Card(props) {
       };
 
       axios
-        .put(`https://insta-clone-temidayo.herokuapp.com/api/posts/edit-post/${props._id}`, newImage)
+        .put(
+          `https://insta-clone-temidayo.herokuapp.com/api/posts/edit-post/${props._id}`,
+          newImage
+        )
         .catch((err) => console.log(err));
     } else {
     }
@@ -139,8 +155,9 @@ function Card(props) {
       <div className="row btw card-top">
         <div className="row">
           <div
-            className="user"
+            className="user pointer"
             style={{ backgroundImage: `url(${props.avatar})` }}
+            onClick={() => handleNavigateToFriend(props.userInfoName)}
           ></div>
           <div className="col">
             <div
@@ -164,7 +181,7 @@ function Card(props) {
               cursor: "pointer",
             }}
           >
-            <MdOutlineMoreVert className="outline-more" />
+            <MdOutlineMoreVert className="outline-more pointer" />
           </div>
         )}
       </div>
@@ -177,9 +194,9 @@ function Card(props) {
             {likesArray && (
               <li className="like-btn">
                 {likesArray.some((e) => e.userId === userInfo._id) ? (
-                  <BsHeartFill onClick={handleRemoveLike} />
+                  <BsHeartFill onClick={handleRemoveLike} className="pointer liked" />
                 ) : (
-                  <BsHeart onClick={handleAddlike} />
+                  <BsHeart onClick={handleAddlike} className="pointer" />
                 )}
               </li>
             )}
@@ -193,18 +210,18 @@ function Card(props) {
                   )
                 }
               >
-                <BiComment />
+                <BiComment className="pointer" />
               </div>
             </li>
             <li>
-              <BsShareFill />
+              <BsShareFill className="pointer" />
             </li>
           </ul>
 
           <div className="div">
             {bookmarks.some((e) => e.postId === props._id || props.postId) ? (
               <RiBookmarkFill
-                className="bookmark"
+                className="bookmark pointer bookmarked"
                 onClick={() =>
                   handleRemoveBookmark(
                     location.pathname === "/bookmarks"
@@ -214,7 +231,10 @@ function Card(props) {
                 }
               />
             ) : (
-              <FaRegBookmark className="bookmark" onClick={handleAddBookmark} />
+              <FaRegBookmark
+                className="bookmark pointer"
+                onClick={handleAddBookmark}
+              />
             )}
           </div>
         </div>

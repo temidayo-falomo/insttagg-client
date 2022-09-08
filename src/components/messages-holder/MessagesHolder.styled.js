@@ -10,6 +10,33 @@ export const StyledMessagesHolder = styled.div`
   overflow: hidden;
   border-radius: 20px;
 
+  .messages-info {
+    text-align: center;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0 20px;
+
+    .circle {
+      border: 1px #262626 solid;
+      padding: 20px;
+      border-radius: 50%;
+      width: 80px;
+      height: 80px;
+      font-size: 2.5rem;
+      display: grid;
+      place-content: center;
+      font-weight: 400;
+
+      .plane-fig {
+        color: #262626 !important;
+        font-weight: 400;
+      }
+    }
+  }
+
   .refresh-holder {
     color: #42cc47;
     position: sticky;

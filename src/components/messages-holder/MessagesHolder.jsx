@@ -8,6 +8,7 @@ import Loading from "../../pages/loading/Loading";
 import { MdRefresh } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { ImCancelCircle } from "react-icons/im";
+import { TbSend } from "react-icons/tb";
 
 function MessagesHolder() {
   const { userInfo, userFollowing } = useContext(AppContext);
@@ -21,7 +22,7 @@ function MessagesHolder() {
   const [clickedMessageName, setClickedMessageName] =
     useState(firstMessageName);
 
-  const [number, setNumber] = useState(0);
+  const [number, setNumber] = useState("disp");
   const [refresh, setRefresh] = useState(false);
 
   const [messageText, setMessageText] = useState("");
@@ -170,6 +171,17 @@ function MessagesHolder() {
           </form>
         </div>
       </div>
+
+      {!number ||
+        (number === "disp" && (
+          <div className="messages-info">
+            <div className="circle">
+              <TbSend className="plane-fig" />
+            </div>
+            <h3>Your Messages</h3>
+            <p>Send private photos and messages to a friend or group.</p>
+          </div>
+        ))}
     </StyledMessagesHolder>
   );
 }
