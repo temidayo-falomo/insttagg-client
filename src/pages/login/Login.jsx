@@ -46,39 +46,41 @@ function Login() {
   }, []);
 
   return (
-    <StyledLogin onSubmit={handleSubmit}>
-      {error && (
-        <div className="error-box">
-          <p>{error}</p>
-        </div>
-      )}
-      <div className="container">
-        <div className="login-right">
-          <div className="login-right-centered col">
-            <h4>Login</h4>
-            <input
-              type="email"
-              name="email"
-              placeholder="Email"
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-            <input
-              type="name"
-              // name="password"
-              // autoComplete="on"
-              placeholder="Password"
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-            <button type="button">Log in</button>
-            <p>
-              Don't have an account? <Link to="/sign-up">Sign Up</Link>
-            </p>
+    <>
+      <StyledLogin onSubmit={handleSubmit}>
+        {error && (
+          <div className="error-box">
+            <p>{error}</p>
+          </div>
+        )}
+        <div className="container">
+          <div className="login-right">
+            <div className="login-right-centered col">
+              <h4>Login</h4>
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+              <input
+                type="name"
+                // name="password"
+                // autoComplete="on"
+                placeholder="Password"
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+              <button>Log in</button>
+              <p>
+                Don't have an account? <Link to="/sign-up">Sign Up</Link>
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-    </StyledLogin>
+      </StyledLogin>
+    </>
   );
 }
 
