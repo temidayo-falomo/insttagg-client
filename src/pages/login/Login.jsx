@@ -71,7 +71,7 @@ function Login() {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-            <button>Log in</button>
+            <button type="button">Log in</button>
             <p>
               Don't have an account? <Link to="/sign-up">Sign Up</Link>
             </p>

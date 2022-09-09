@@ -101,6 +101,11 @@ function App() {
     }
   }, []);
 
+  // document.requestStorageAccess().then(
+  //   () => { console.log('access granted') },
+  //   () => { console.log('access denied') }
+  // );
+
   return (
     <AppContext.Provider
       value={{

@@ -53,7 +53,7 @@ function FriendContent() {
 
   const handleGetUserPosts = () => {
     axios
-      .get(`http://localhost:5600/api/posts/user-posts/${id}`)
+      .get(`https://insta-clone-temidayo.herokuapp.com/api/posts/user-posts/${id}`)
       .then((res) => setUserPosts(res.data.posts))
       .catch((err) => console.error(err));
   };
