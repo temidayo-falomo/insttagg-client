@@ -94,11 +94,4 @@ export const StyledCard = styled.div`
     color: #fff;
   }
 
-  .liked {
-    color: red;
-  }
-
-  .bookmarked {
-    color: #1982fc;
-  }
 `;

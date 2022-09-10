@@ -35,6 +35,8 @@ export const StyledSinglePost = styled.div`
       width: 150px;
       padding: 10px;
       border-radius: 10px;
+      background-color: #1982fc;
+      color: #fff;
     }
 
     span {

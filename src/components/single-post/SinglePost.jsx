@@ -5,7 +5,7 @@ import { StyledSinglePost } from "./SinglePost.styled";
 import { FaRegBookmark } from "react-icons/fa";
 import { MdOutlineMoreVert } from "react-icons/md";
 import SingleComment from "../single-comment/SingleComment";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { AppContext } from "../../helper/Context";
 import { RiBookmarkFill } from "react-icons/ri";
@@ -15,41 +15,48 @@ function SinglePost() {
   const id = useParams().id;
   const [postInfo, setPostInfo] = useState({});
   const [loading, setLoading] = useState(true);
-  const [likesArray, setLikesArray] = useState();
+  const [likesArray, setLikesArray] = useState(postInfo.likes);
   const { userInfo, bookmarks, setBookmarks } = useContext(AppContext);
 
   const [commentText, setCommentText] = useState("");
+  let navigate = useNavigate();
 
   let allComments = postInfo.comments;
 
-  const handleAddlike = () => {
-    const likeData = {
-      name: userInfo.firstName + userInfo.lastName,
-      avatar: userInfo.avatar,
-      userId: userInfo._id,
-      pId: postInfo._id,
-    };
+  // const handleAddlike = () => {
+  //   const likeData = {
+  //     name: userInfo.firstName + userInfo.lastName,
+  //     avatar: userInfo.avatar,
+  //     userId: userInfo._id,
+  //     pId: postInfo._id,
+  //   };
 
-    axios
-      .put("https://insta-clone-temidayo.herokuapp.com/api/posts/like", likeData)
-      .catch((err) => console.error(err));
-    postInfo.likes.push(likeData);
+  //   axios
+  //     .put(
+  //       "https://insta-clone-temidayo.herokuapp.com/api/posts/like",
+  //       likeData
+  //     )
+  //     .catch((err) => console.error(err));
+  //   postInfo.likes.push(likeData);
 
-    setLikesArray([...likesArray, likeData]);
-  };
+  //   setLikesArray([...likesArray, likeData]);
+  // };
 
-  const handleRemoveLike = () => {
-    const likeData = {
-      userId: userInfo._id,
-      postId: postInfo._id,
-    };
-    axios
-      .put("https://insta-clone-temidayo.herokuapp.com/api/posts/unlike", likeData)
-      .catch((err) => console.error(err));
+  // const handleRemoveLike = () => {
+  //   const likeData = {
+  //     userId: userInfo._id,
+  //     postId: postInfo._id,
+  //   };
+  //   axios
+  //     .put(
+  //       "https://insta-clone-temidayo.herokuapp.com/api/posts/unlike",
+  //       likeData
+  //     )
+  //     .catch((err) => console.error(err));
 
-    let filtered = likesArray.filter((item) => item.userId !== likeData.userId);
-    setLikesArray(filtered);
-  };
+  //   let filtered = likesArray.filter((item) => item.userId !== likeData.userId);
+  //   setLikesArray(filtered);
+  // };
 
   const getPostInfo = () => {
     axios
@@ -78,7 +85,10 @@ function SinglePost() {
     };
 
     axios
-      .put("https://insta-clone-temidayo.herokuapp.com/api/posts/comment", commentData)
+      .put(
+        "https://insta-clone-temidayo.herokuapp.com/api/posts/comment",
+        commentData
+      )
       .catch((err) => console.error(err));
 
     setCommentText("");
@@ -100,7 +110,10 @@ function SinglePost() {
     };
 
     axios
-      .post("https://insta-clone-temidayo.herokuapp.com/api/bookmarks/add-bookmark", bookmarkData)
+      .post(
+        "https://insta-clone-temidayo.herokuapp.com/api/bookmarks/add-bookmark",
+        bookmarkData
+      )
       .catch((err) => console.error(err));
 
     // bookmarks.push(bookmarkData);
@@ -132,6 +145,10 @@ function SinglePost() {
     setBookmarks(filtered);
   };
 
+  const handleNavigateToFriend = (param) => {
+    navigate(`/${param}`);
+  };
+
   if (loading && likesArray === undefined) {
     return <Loading />;
   }
@@ -154,7 +171,9 @@ function SinglePost() {
               className="avt"
               style={{ backgroundImage: `url(${postInfo.avatar})` }}
             ></div>
-            <h5>{postInfo.username}</h5>
+            <h5 onClick={() => handleNavigateToFriend(postInfo.userInfoName)}>
+              {postInfo.username}
+            </h5>
           </div>
 
           <div className="options">
@@ -184,29 +203,38 @@ function SinglePost() {
             style={{ fontSize: "1.5rem", gap: "1.5rem" }}
           >
             <div className="row" style={{ gap: "1.5rem" }}>
-              {likesArray && (
+              {/* {likesArray && (
                 <p>
                   {likesArray.some((e) => e.userId === userInfo._id) ? (
-                    <BsHeartFill onClick={handleRemoveLike} />
+                    <BsHeartFill
+                      onClick={handleRemoveLike}
+                      className="pointer"
+                    />
                   ) : (
-                    <BsHeart onClick={handleAddlike} />
+                    <BsHeart onClick={handleAddlike} className="pointer" />
                   )}
                 </p>
-              )}
+              )} */}
               <p>
                 <BiComment />
               </p>
               <p>
-                <BsShareFill />
+                <BsShareFill className="pointer" />
               </p>
             </div>
             {bookmarks && (
               <p>
                 {bookmarks.some((e) => e.postId === postInfo._id) && (
-                  <RiBookmarkFill className="bookmark" onClick={handleRemoveBookmark}/>
+                  <RiBookmarkFill
+                    className="bookmark pointer bookmarked"
+                    onClick={handleRemoveBookmark}
+                  />
                 )}
                 {!bookmarks.some((e) => e.postId === postInfo._id) && (
-                  <FaRegBookmark className="bookmark" onClick={handleAddBookmark}/>
+                  <FaRegBookmark
+                    className="bookmark pointer"
+                    onClick={handleAddBookmark}
+                  />
                 )}
               </p>
             )}

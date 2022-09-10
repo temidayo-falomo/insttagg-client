@@ -5,19 +5,15 @@ import Rightbar from "../../components/rightbar/Rightbar";
 import SinglePost from "../../components/single-post/SinglePost";
 import { StyledPostById } from "./PostById.styled";
 import { ImCancelCircle } from "react-icons/im";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { AppContext } from "../../helper/Context";
 import { useContext } from "react";
 import Loading from "../loading/Loading";
 
 function PostById() {
-  const {
-    userInfo,
-    setUserInfo,
-    bookmarks,
-    setIsLoggedIn,
-    loading,
-  } = useContext(AppContext);
+  let navigate = useNavigate();
+  const { userInfo, setUserInfo, bookmarks, setIsLoggedIn, loading } =
+    useContext(AppContext);
 
   useEffect(() => {
     setIsLoggedIn(true);
@@ -26,6 +22,17 @@ function PostById() {
   if (loading) {
     return <Loading />;
   }
+
+  const handleNavigateToPrev = () => {
+    new Promise((myResolve, myReject) => {
+      myResolve();
+      myReject();
+    }).then(() => {
+      navigate(-1);
+    });
+  };
+
+  
 
   return (
     <StyledPostById>
@@ -36,9 +43,11 @@ function PostById() {
             <Navbar />
             <div className="modal">
               <SinglePost />
-              <Link className="cancel" to="/">
-                <ImCancelCircle />
-              </Link>
+
+              <ImCancelCircle
+                className="cancel pointer"
+                onClick={handleNavigateToPrev}
+              />
             </div>
           </div>
         )}

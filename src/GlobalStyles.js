@@ -107,6 +107,14 @@ const GlobalStyle = createGlobalStyle`
     cursor: pointer;
   }
 
+  .liked {
+    color: red;
+  }
+
+  .bookmarked {
+    color: #1982fc;
+  }
+
   ::-webkit-scrollbar {
     width: 0;
   }

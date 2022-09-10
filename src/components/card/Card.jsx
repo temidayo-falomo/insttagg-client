@@ -194,7 +194,10 @@ function Card(props) {
             {likesArray && (
               <li className="like-btn">
                 {likesArray.some((e) => e.userId === userInfo._id) ? (
-                  <BsHeartFill onClick={handleRemoveLike} className="pointer liked" />
+                  <BsHeartFill
+                    onClick={handleRemoveLike}
+                    className="pointer liked"
+                  />
                 ) : (
                   <BsHeart onClick={handleAddlike} className="pointer" />
                 )}

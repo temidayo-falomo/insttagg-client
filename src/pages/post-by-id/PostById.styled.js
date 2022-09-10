@@ -20,9 +20,7 @@ export const StyledPostById = styled.div`
     z-index: 9999999999999999;
     top: 5%;
     right: 5%;
-    color: #fff;
     font-size: 2rem;
+    color: red;
   }
-
-  
 `;
