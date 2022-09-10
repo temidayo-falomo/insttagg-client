@@ -60,4 +60,12 @@ export const StyledFriendContent = styled.div`
     flex-wrap: wrap;
     gap: 2rem;
   }
+
+  @media (max-width: 1030px) {
+    .friend-info {
+      p {
+        width: 90%;
+      }
+    }
+  }
 `;

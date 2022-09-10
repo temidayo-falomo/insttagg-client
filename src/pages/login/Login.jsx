@@ -13,11 +13,13 @@ const config = {
 
 function Login() {
   axios.defaults.withCredentials = true;
+  const save = window.localStorage.getItem("userInfo");
 
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState(JSON.parse(save));
   const [password, setPassword] = useState("");
   const [error, setError] = useState();
-  const { userInfo, setIsLoggedIn, setLoading } = useContext(AppContext);
+  const { setIsLoggedIn, setLoading } = useContext(AppContext);
+  const [disabled, setDisabled] = useState(false);
 
   let navigate = useNavigate();
 
@@ -35,6 +37,7 @@ function Login() {
         userData,
         config
       )
+      .then(() => setDisabled(true))
       .then(() => navigate("/"))
       .then(() => window.location.reload())
       .catch((err) => setError(err.response.data.message));
@@ -44,6 +47,10 @@ function Login() {
     setIsLoggedIn(false);
     setLoading(false);
   }, []);
+
+  useEffect(() => {
+    window.localStorage.setItem("userInfo", JSON.stringify(email));
+  }, [email]);
 
   return (
     <>
@@ -60,19 +67,30 @@ function Login() {
               <input
                 type="email"
                 name="email"
+                value={email}
                 placeholder="Email"
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
               <input
-                type="name"
-                // name="password"
-                // autoComplete="on"
+                type="password"
+                name="password"
+                autoComplete="on"
                 placeholder="Password"
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
-              <button>Log in</button>
+              {!disabled ? (
+                <button className="btn">Log In</button>
+              ) : (
+                <button
+                  className="btn"
+                  disabled
+                  style={{ cursor: "not-allowed" }}
+                >
+                  Log In
+                </button>
+              )}
               <p>
                 Don't have an account? <Link to="/sign-up">Sign Up</Link>
               </p>

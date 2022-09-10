@@ -19,7 +19,8 @@ export const StyledLogin = styled.form`
   }
 
   .container {
-    width: 500px;
+    width: 60%;
+    max-width: 500px;
     margin: auto;
     display: flex;
     align-items: center;
@@ -27,7 +28,8 @@ export const StyledLogin = styled.form`
     background: rgba(255, 255, 255, 0.2);
     border-radius: 20px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    min-height: 40vh;
+    min-height: 400px;
+    min-width: 300px;
     position: relative;
   }
 
@@ -62,6 +64,12 @@ export const StyledLogin = styled.form`
       color: #fff;
       border-radius: 10px;
       font-weight: 600;
+    }
+
+    button:hover {
+      background-color: transparent;
+      color: #3949ab;
+      border: 1px #3949ab solid;
     }
   }
 `;

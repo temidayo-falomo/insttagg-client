@@ -4,6 +4,7 @@ import FriendCard from "../../components/friend-card/FriendCard";
 import Leftbar from "../../components/leftbar/Leftbar";
 import Navbar from "../../components/navbar/Navbar";
 import Rightbar from "../../components/rightbar/Rightbar";
+import ToggleRightbar from "../../components/toggle-right-bar-btn/ToggleRightbar";
 import { AppContext } from "../../helper/Context";
 import Loading from "../loading/Loading";
 import { StyledAllUsers } from "./AllUsers.styled";
@@ -56,6 +57,7 @@ function AllUsers() {
           <Rightbar />
         </>
       )}
+       <ToggleRightbar />
     </StyledAllUsers>
   );
 }

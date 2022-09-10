@@ -8,9 +8,5 @@ export const StyledUserById = styled.div`
 
   @media (max-width: 1030px) {
     grid-template-columns: 50px auto;
-
-    p {
-      width: 80% !important;
-    }
   }
 `;

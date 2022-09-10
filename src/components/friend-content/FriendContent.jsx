@@ -67,8 +67,6 @@ function FriendContent() {
     return <Loading />;
   }
 
-  console.log(userPosts);
-
   return (
     <StyledFriendContent>
       {friendObject && (

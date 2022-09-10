@@ -43,7 +43,8 @@ export const StyledSignUp = styled.form`
   }
 
   .container {
-    width: 500px;
+    width: 60%;
+    max-width: 500px;
     margin: auto;
     display: flex;
     align-items: center;
@@ -51,7 +52,8 @@ export const StyledSignUp = styled.form`
     background: rgba(255, 255, 255, 0.2);
     border-radius: 20px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    min-height: 50vh;
+    min-height: 550px;
+    min-width: 340px;
     position: relative;
   }
 
@@ -98,11 +100,11 @@ export const StyledSignUp = styled.form`
 
       span {
         position: absolute;
-        right: 1rem;
-        padding: 5px 10px;
+        right: .5rem;
+        padding: 5px 8px;
         background-color: #3949ab;
         color: #fff;
-        font-size: 0.8rem;
+        font-size: 0.7rem;
         border-radius: 10px;
         cursor: pointer;
       }
@@ -131,6 +133,12 @@ export const StyledSignUp = styled.form`
       color: #fff;
       border-radius: 10px;
       font-weight: 600;
+    }
+
+    .btn:hover {
+      background-color: transparent;
+      color: #3949ab;
+      border: 1px #3949ab solid;
     }
   }
 `;

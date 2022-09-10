@@ -33,6 +33,12 @@ function App() {
 
   let navigate = useNavigate();
 
+  useEffect(() => {
+    if (window.innerWidth > 1030) {
+      setToggledRightbar(false);
+    }
+  }, []);
+
   const sendUserRequest = async () => {
     const res = await axios
       .get("https://insta-clone-temidayo.herokuapp.com/api/user", {
@@ -75,7 +81,6 @@ function App() {
     const { offsetHeight, scrollTop, scrollHeight } = e.target;
     if (offsetHeight + scrollTop >= scrollHeight) {
       setSkip(generalPosts.length + 3);
-      console.log(skip);
     }
   };
 
@@ -94,14 +99,6 @@ function App() {
   useEffect(() => {
     getPosts(skip);
   }, [skip]);
-
-  useEffect(() => {
-    if (window.innerWidth > 1030) {
-      setToggledRightbar(false);
-    }
-  }, []);
-
-  
 
   // document.requestStorageAccess().then(
   //   () => { console.log('access granted') },

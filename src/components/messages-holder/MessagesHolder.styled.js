@@ -136,6 +136,7 @@ export const StyledMessagesHolder = styled.div`
       .cancel {
         font-size: 1.5rem;
         fill: orange;
+        display: none;
       }
     }
 
@@ -204,6 +205,10 @@ export const StyledMessagesHolder = styled.div`
     display: flex;
     flex-direction: column;
     min-width: 300px;
+
+    .cancel {
+      display: block !important;
+    }
 
     .left-div {
       min-width: 300px;

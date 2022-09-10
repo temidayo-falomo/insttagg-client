@@ -13,13 +13,16 @@ const config = {
 
 function SignUp() {
   axios.defaults.withCredentials = false;
-  const [email, setEmail] = useState("");
+  const save = window.localStorage.getItem("userInfo");
+
+  const [email, setEmail] = useState(JSON.parse(save));
   const [password, setPassword] = useState("");
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [username, setUserName] = useState("");
   const [avatar, setAvatar] = useState("https://i.stack.imgur.com/frlIf.png");
   const { userInfo } = useContext(AppContext);
+  const [disabled, setDisabled] = useState(false);
 
   const [error, setError] = useState();
 
@@ -40,27 +43,23 @@ function SignUp() {
     e.preventDefault();
     await axios
       .post("https://insta-clone-temidayo.herokuapp.com/api/signup", userData)
+      .then(() => setDisabled(true))
+      .then(() =>
+        axios
+          .post(
+            "https://insta-clone-temidayo.herokuapp.com/api/login",
+            {
+              email: email,
+              password: password,
+            },
+            config
+          )
+          .then(() => navigate("/"))
+          .then(() => window.location.reload())
+          .catch((err) => setError(err.response.data.message))
+      )
       .catch((err) => setError(err.response.data.message));
-
-    setTimeout(() => {
-      axios
-        .post(
-          "https://insta-clone-temidayo.herokuapp.com/api/login",
-          {
-            email: email,
-            password: password,
-          },
-          config
-        )
-        .then(() => navigate("/"))
-        .then(() => window.location.reload())
-        .catch((err) => setError(err.response.data.message));
-    }, 3000);
   };
-
-  // if (userInfo) {
-  //   navigate("/");
-  // }
 
   const handleGetRandomWord = () => {
     axios
@@ -75,6 +74,10 @@ function SignUp() {
       .then((res) => setPassword(res.data))
       .catch((err) => console.error(err));
   };
+
+  useEffect(() => {
+    window.localStorage.setItem("userInfo", JSON.stringify(email));
+  }, [email]);
 
   return (
     <StyledSignUp onSubmit={handleSubmit}>
@@ -102,6 +105,14 @@ function SignUp() {
                 required
               />
             </div>
+
+            <input
+              placeholder="Create Username"
+              value={username}
+              onChange={(e) => setUserName(e.target.value)}
+              required
+            />
+
             <div className="holder">
               <span onClick={handleGetRandomWord}>Use Random Email?</span>
               <input
@@ -113,13 +124,6 @@ function SignUp() {
                 required
               />
             </div>
-            <input
-              type="name"
-              name="name"
-              placeholder="Create Username"
-              onChange={(e) => setUserName(e.target.value)}
-              required
-            />
 
             <div className="holder">
               <span onClick={handleGetRandomPassword}>Random Password?</span>
@@ -133,7 +137,17 @@ function SignUp() {
                 required
               />
             </div>
-            <button className="btn">Sign Up</button>
+            {!disabled ? (
+              <button className="btn">Sign Up</button>
+            ) : (
+              <button
+                className="btn"
+                disabled
+                style={{ cursor: "not-allowed" }}
+              >
+                Sign Up
+              </button>
+            )}
             <p>
               Already have an account? <Link to="/login">Log In</Link>
             </p>

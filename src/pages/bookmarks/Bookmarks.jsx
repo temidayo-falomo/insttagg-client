@@ -6,6 +6,7 @@ import { StyledBookmarks } from "./Bookmarks.styled";
 import Card from "../../components/card/Card";
 import { AppContext } from "../../helper/Context";
 import Loading from "../loading/Loading";
+import ToggleRightbar from "../../components/toggle-right-bar-btn/ToggleRightbar";
 
 function Bookmarks() {
   const { userInfo, bookmarks, loading, setIsLoggedIn } =
@@ -40,6 +41,7 @@ function Bookmarks() {
         )}
       </>
       <Rightbar />
+      <ToggleRightbar />
     </StyledBookmarks>
   );
 }
