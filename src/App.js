@@ -128,6 +128,8 @@ function App() {
     >
       <div className="App">
         <GlobalStyle />
+        
+
         <Routes>
           {/* Auth Pages */}
           <Route path="/login" element={<Login />} />
@@ -145,12 +147,6 @@ function App() {
           <Route path="/logout" element={<Logout />} />
           <Route path="/anonymous" element={<AnonDashboard />} />
         </Routes>
-        {tokenError && (
-          <h1 style={{ margin: "auto" }}>
-            There appears to be issuse with signing you in. Please try login
-            again
-          </h1>
-        )}
       </div>
     </AppContext.Provider>
   );

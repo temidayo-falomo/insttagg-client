@@ -57,7 +57,7 @@ function AllUsers() {
           <Rightbar />
         </>
       )}
-       <ToggleRightbar />
+      <ToggleRightbar />
     </StyledAllUsers>
   );
 }

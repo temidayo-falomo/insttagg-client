@@ -82,6 +82,7 @@ function SinglePost() {
       userId: userInfo._id,
       commentText: commentText,
       pId: postInfo._id,
+      userInfoName: userInfo.username,
     };
 
     axios
