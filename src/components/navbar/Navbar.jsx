@@ -47,7 +47,7 @@ function Navbar() {
       <img src="./assets/ig.svg" alt="" />
       <input
         type="search"
-        placeholder="Search"
+        placeholder="Search Users..."
         onChange={(e) => handleSearch(e.target.value)}
       />
       {showSearch && (

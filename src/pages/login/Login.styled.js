@@ -13,9 +13,12 @@ export const StyledLogin = styled.form`
     text-align: center;
     border: 2px black solid;
     border-radius: 10px;
-    width: 400px;
+    width: 80%;
+    max-width: 400px;
     padding: 20px;
-    top: 2rem;
+    top: 3rem;
+    background-color: #fff;
+    z-index: 999;
   }
 
   .container {

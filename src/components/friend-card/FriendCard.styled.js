@@ -1,17 +1,17 @@
 import styled from "styled-components";
 
 export const StyledFriendCard = styled.div`
-  padding: 10px;
-  height: 290px;
-  min-width: 280px;
+  padding: 15px 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
   gap: 0.8rem;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  width: 300px;
 
   button {
     padding: 8px 20px;

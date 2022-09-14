@@ -34,7 +34,7 @@ function SignUp() {
     profession: "Regular Person",
     avatar: avatar,
     bio: "I am a mysterious person who doesn't want to say anything yet",
-    username: username,
+    username: username.replace(/\s/g, " ").toLowerCase(),
   };
 
   let navigate = useNavigate();
@@ -107,6 +107,7 @@ function SignUp() {
             </div>
 
             <input
+              style={{ textTransform: "lowercase" }}
               placeholder="Create Username"
               value={username}
               onChange={(e) => setUserName(e.target.value)}

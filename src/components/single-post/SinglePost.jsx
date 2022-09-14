@@ -185,6 +185,7 @@ function SinglePost() {
         <div className="users-comments">
           <div className="margin-btm">
             <p>"{postInfo.postText}</p>
+            <span>(Comment Below)</span>
           </div>
 
           <div className="col gap-1">
@@ -251,7 +252,7 @@ function SinglePost() {
                     } others`}
               </p>
             )}
-            <span>6 hours ago</span>
+            <span>2 hours ago</span>
           </div>
           <form
             className="row center"

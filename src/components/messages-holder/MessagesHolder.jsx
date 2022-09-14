@@ -6,7 +6,7 @@ import { AppContext } from "../../helper/Context";
 import { FiSend } from "react-icons/fi";
 import Loading from "../../pages/loading/Loading";
 import { MdRefresh } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ImCancelCircle } from "react-icons/im";
 import { TbSend } from "react-icons/tb";
 
@@ -28,6 +28,8 @@ function MessagesHolder() {
   const [messageText, setMessageText] = useState("");
   const [loading, setLoading] = useState(true);
   const [showBox, setShowBox] = useState(false);
+
+  let navigate = useNavigate();
 
   useEffect(() => {
     getMessages();
@@ -87,6 +89,10 @@ function MessagesHolder() {
     return <Loading />;
   }
 
+  const handleNavigateTo = () => {
+    navigate(`/`);
+  };
+
   // userToAddToUserId
 
   // if (userInfo.following.length === 0) {
@@ -122,7 +128,13 @@ function MessagesHolder() {
 
       <div className={showBox ? "right-div" : "none"}>
         <div className="top-bar row btw">
-          <div className="row">To: {clickedMessageName}</div>
+          <div className="row center">
+            To:{" "}
+            <h4 className="pointer" onClick={handleNavigateTo}>
+              {" "}
+              {clickedMessageName}
+            </h4>
+          </div>
           <ImCancelCircle
             className="cancel"
             onClick={() => setShowBox(false)}

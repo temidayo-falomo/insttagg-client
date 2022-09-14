@@ -71,11 +71,9 @@ export const StyledSinglePost = styled.div`
 
     .users-comments {
       margin-top: 5rem;
-      height: 200px;
       width: 100%;
       padding: 10px 20px;
       overflow: auto;
-      height: 68vh;
       padding-bottom: 2rem;
     }
 
@@ -103,7 +101,6 @@ export const StyledSinglePost = styled.div`
       margin-top: 0.5rem;
       border: none;
       outline: none;
-      text-transform: capitalize;
     }
   }
 
@@ -114,14 +111,20 @@ export const StyledSinglePost = styled.div`
     height: 90vh;
     overflow: auto;
 
+    form {
+      padding-bottom: 1.5rem !important;
+    }
+
     .comment-input {
-      position: static;
+      position: static !important;
     }
 
     .users-comments {
-      overflow: hidden;
-      max-height: 120px;
-      min-height: 0;
+      overflow: hidden !important;
+
+      .margin-btm {
+        margin: 1rem !important;
+      }
 
       ::-webkit-scrollbar {
         width: 0em;

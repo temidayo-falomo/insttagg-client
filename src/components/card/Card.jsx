@@ -185,7 +185,14 @@ function Card(props) {
           </div>
         )}
       </div>
-      <div className="image">
+      <div
+        className="image"
+        onClick={() =>
+          handleNavigateToComment(
+            location.pathname === "/bookmarks" ? props.postId : props._id
+          )
+        }
+      >
         <img src={props.image} alt="" />
       </div>
       <div className="card-bottom col">

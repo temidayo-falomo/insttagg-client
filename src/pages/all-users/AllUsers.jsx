@@ -43,11 +43,11 @@ function AllUsers() {
             <div
               style={{
                 height: "100vh",
-                overflow: "auto",
+                // overflow: "auto",
                 paddingBottom: "5rem",
               }}
             >
-              <div className="friend-cards">
+              <div className="friend-cards" style={{ overflow: "auto" }}>
                 {allFriends.map((data) => {
                   return <FriendCard {...data} key={data._id} />;
                 })}
