@@ -13,7 +13,6 @@ import { useEffect } from "react";
 
 function Card(props) {
   const [clicked, setClicked] = useState(false);
-  const [liked, setLiked] = useState(true);
   const { userInfo, bookmarks, setBookmarks, generalPosts, setGeneralPosts } =
     useContext(AppContext);
   const [options, setOptions] = useState(false);
@@ -69,7 +68,7 @@ function Card(props) {
   };
 
   const handleAddlike = () => {
-    setLiked(false);
+    // setLiked(false);
     const likeData = {
       name: userInfo.firstName + " " + userInfo.lastName,
       avatar: userInfo.avatar,

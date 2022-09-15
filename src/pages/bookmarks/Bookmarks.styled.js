@@ -3,6 +3,8 @@ import styled from "styled-components";
 export const StyledBookmarks = styled.div`
   display: grid;
   grid-template-columns: 100px auto 400px;
+  height: 100vh;
+  overflow: hidden;
 
   .card {
     background-color: whitesmoke !important;

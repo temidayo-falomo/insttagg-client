@@ -23,40 +23,40 @@ function SinglePost() {
 
   let allComments = postInfo.comments;
 
-  // const handleAddlike = () => {
-  //   const likeData = {
-  //     name: userInfo.firstName + userInfo.lastName,
-  //     avatar: userInfo.avatar,
-  //     userId: userInfo._id,
-  //     pId: postInfo._id,
-  //   };
+  const handleAddlike = () => {
+    const likeData = {
+      name: userInfo.firstName + userInfo.lastName,
+      avatar: userInfo.avatar,
+      userId: userInfo._id,
+      pId: postInfo._id,
+    };
 
-  //   axios
-  //     .put(
-  //       "https://insta-clone-temidayo.herokuapp.com/api/posts/like",
-  //       likeData
-  //     )
-  //     .catch((err) => console.error(err));
-  //   postInfo.likes.push(likeData);
+    axios
+      .put(
+        "https://insta-clone-temidayo.herokuapp.com/api/posts/like",
+        likeData
+      )
+      .catch((err) => console.error(err));
+    postInfo.likes.push(likeData);
 
-  //   setLikesArray([...likesArray, likeData]);
-  // };
+    setLikesArray([...likesArray, likeData]);
+  };
 
-  // const handleRemoveLike = () => {
-  //   const likeData = {
-  //     userId: userInfo._id,
-  //     postId: postInfo._id,
-  //   };
-  //   axios
-  //     .put(
-  //       "https://insta-clone-temidayo.herokuapp.com/api/posts/unlike",
-  //       likeData
-  //     )
-  //     .catch((err) => console.error(err));
+  const handleRemoveLike = () => {
+    const likeData = {
+      userId: userInfo._id,
+      postId: postInfo._id,
+    };
+    axios
+      .put(
+        "https://insta-clone-temidayo.herokuapp.com/api/posts/unlike",
+        likeData
+      )
+      .catch((err) => console.error(err));
 
-  //   let filtered = likesArray.filter((item) => item.userId !== likeData.userId);
-  //   setLikesArray(filtered);
-  // };
+    let filtered = likesArray.filter((item) => item.userId !== likeData.userId);
+    setLikesArray(filtered);
+  };
 
   const getPostInfo = () => {
     axios
@@ -205,7 +205,7 @@ function SinglePost() {
             style={{ fontSize: "1.5rem", gap: "1.5rem" }}
           >
             <div className="row" style={{ gap: "1.5rem" }}>
-              {/* {likesArray && (
+              {likesArray && (
                 <p>
                   {likesArray.some((e) => e.userId === userInfo._id) ? (
                     <BsHeartFill
@@ -216,7 +216,7 @@ function SinglePost() {
                     <BsHeart onClick={handleAddlike} className="pointer" />
                   )}
                 </p>
-              )} */}
+              )}
               <p>
                 <BiComment />
               </p>

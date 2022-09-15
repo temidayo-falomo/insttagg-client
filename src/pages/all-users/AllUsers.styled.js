@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const StyledAllUsers = styled.div`
   display: grid;
   grid-template-columns: 100px auto 400px;
-  min-height: 100vh;
+  height: 100vh;
   overflow: hidden;
 
   .friend-cards {

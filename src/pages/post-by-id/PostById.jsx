@@ -12,7 +12,7 @@ import Loading from "../loading/Loading";
 
 function PostById() {
   let navigate = useNavigate();
-  const { userInfo, setUserInfo, bookmarks, setIsLoggedIn, loading } =
+  const { userInfo, bookmarks, setIsLoggedIn, loading } =
     useContext(AppContext);
 
   useEffect(() => {
@@ -27,12 +27,12 @@ function PostById() {
     new Promise((myResolve, myReject) => {
       myResolve();
       myReject();
-    }).then(() => {
-      navigate(-1);
-    });
+    })
+      .then(() => {
+        navigate(-1);
+      })
+      .catch((err) => console.log(err));
   };
-
-  
 
   return (
     <StyledPostById>

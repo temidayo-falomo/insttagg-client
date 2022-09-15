@@ -23,22 +23,39 @@ export const StyledLogin = styled.form`
 
   .container {
     width: 60%;
-    max-width: 500px;
+    max-width: 450px;
     margin: auto;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     background: rgba(255, 255, 255, 0.2);
     border-radius: 20px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    min-height: 400px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    min-height: 420px;
     min-width: 300px;
     position: relative;
+    padding-top: 2rem;
+
+    .iphone {
+      padding: 10px 15px;
+      border-radius: 10px;
+      background-color: green;
+      color: #fff;
+      position: relative;
+      
+      :hover {
+        background-color: transparent;
+        border: 1px green solid;
+        color: green;
+      }
+    }
   }
 
   .login-right {
     width: 100%;
     padding: 1%;
+    padding-bottom: 0;
     text-align: center;
     display: flex;
     align-items: center;
@@ -52,7 +69,7 @@ export const StyledLogin = styled.form`
 
     h4 {
       font-size: 1.5rem;
-      margin-bottom: 3rem;
+      margin-bottom: 2rem;
     }
 
     input {

@@ -91,10 +91,19 @@ function Login() {
                   Log In
                 </button>
               )}
-              <p>
-                Don't have an account? <Link to="/sign-up">Sign Up</Link>
+              <p style={{ lineHeight: "25px" }}>
+                Don't have an account?{" "}
+                <Link to="/sign-up" style={{ display: "inline-block" }}>
+                  {" "}
+                  Sign Up
+                </Link>
               </p>
             </div>
+          </div>
+          <div style={{ margin: "2rem auto" }}>
+            <Link to="/login-issue" className="iphone">
+              Unable to Login?
+            </Link>
           </div>
         </div>
       </StyledLogin>

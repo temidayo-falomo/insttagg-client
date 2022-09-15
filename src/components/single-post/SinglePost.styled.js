@@ -30,6 +30,11 @@ export const StyledSinglePost = styled.div`
     height: 100%;
     width: 40%;
     position: relative;
+  
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 1rem;
 
     button {
       width: 150px;
@@ -111,6 +116,7 @@ export const StyledSinglePost = styled.div`
     height: 90vh;
     overflow: auto;
 
+
     form {
       padding-bottom: 1.5rem !important;
     }
@@ -144,6 +150,9 @@ export const StyledSinglePost = styled.div`
     .post-right {
       width: 100%;
       margin-top: 1rem;
+      justify-content: space-between;
+     
+      
     }
   }
 `;

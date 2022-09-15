@@ -44,7 +44,8 @@ export const StyledSignUp = styled.form`
 
   .container {
     width: 60%;
-    max-width: 500px;
+    max-width: 450px;
+    height: 500px;
     margin: auto;
     display: flex;
     align-items: center;
@@ -55,6 +56,7 @@ export const StyledSignUp = styled.form`
     min-height: 550px;
     min-width: 340px;
     position: relative;
+    overflow: auto;
   }
 
   .login-left {

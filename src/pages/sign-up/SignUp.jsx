@@ -69,10 +69,7 @@ function SignUp() {
   };
 
   const handleGetRandomPassword = () => {
-    axios
-      .get("https://www.passwordrandom.com/query?command=password")
-      .then((res) => setPassword(res.data))
-      .catch((err) => console.error(err));
+    
   };
 
   useEffect(() => {

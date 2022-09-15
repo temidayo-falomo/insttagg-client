@@ -16,6 +16,7 @@ import StoryPage from "./pages/story-page/StoryPage";
 import Messenger from "./pages/messenger/Messenger";
 import Logout from "./pages/logout/Logout";
 import AnonDashboard from "./pages/anonymous/AnonDashboard";
+import LoginIssue from "./pages/login-issue/LoginIssue";
 
 axios.defaults.withCredentials = true;
 
@@ -128,7 +129,6 @@ function App() {
     >
       <div className="App">
         <GlobalStyle />
-        
 
         <Routes>
           {/* Auth Pages */}
@@ -146,6 +146,7 @@ function App() {
           <Route path="/messenger" element={<Messenger />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="/anonymous" element={<AnonDashboard />} />
+          <Route path="/login-issue" element={<LoginIssue />} />
         </Routes>
       </div>
     </AppContext.Provider>
