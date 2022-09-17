@@ -126,7 +126,7 @@ export const StyledSinglePost = styled.div`
     }
 
     .users-comments {
-      overflow: hidden !important;
+      overflow: auto !important;
 
       .margin-btm {
         margin: 1rem !important;
@@ -151,8 +151,6 @@ export const StyledSinglePost = styled.div`
       width: 100%;
       margin-top: 1rem;
       justify-content: space-between;
-     
-      
     }
   }
 `;
