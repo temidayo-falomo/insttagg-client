@@ -36,7 +36,7 @@ function Messenger() {
                 <Link to="/all-users">
                   <button>See Users</button>
                 </Link>
-                <p>Youu need to follow other users to use this feature.</p>
+                <p>You need to follow other users to use this feature.</p>
               </div>
             </StyledMessengerError>
           )}

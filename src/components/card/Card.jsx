@@ -184,6 +184,7 @@ function Card(props) {
           </div>
         )}
       </div>
+
       <div
         className="image"
         onClick={() =>
@@ -194,6 +195,7 @@ function Card(props) {
       >
         <img src={props.image} alt="" />
       </div>
+
       <div className="card-bottom col">
         <div className="row btw">
           <ul className="row">
@@ -247,6 +249,9 @@ function Card(props) {
             )}
           </div>
         </div>
+
+
+
 
         <div className="row btw card-bar">
           {likesArray && (

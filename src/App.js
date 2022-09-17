@@ -29,16 +29,16 @@ function App() {
   const [theme, setTheme] = useState("dark");
   const [userFollowing, setUserFollowing] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState();
-  const [toggledRightbar, setToggledRightbar] = useState(true);
+  const [toggledRightbar, setToggledRightbar] = useState(false);
   const [tokenError, setTokenError] = useState(false);
 
   let navigate = useNavigate();
 
-  useEffect(() => {
-    if (window.innerWidth > 1030) {
-      setToggledRightbar(false);
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (window.innerWidth > 1030) {
+  //     setToggledRightbar(false);
+  //   }
+  // }, []);
 
   const sendUserRequest = async () => {
     const res = await axios

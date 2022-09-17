@@ -15,7 +15,7 @@ export const StyledLoginIssue = styled.div`
   }
 
   p {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     line-height: 40px;
     padding: 20px 20px;
   }
@@ -27,7 +27,7 @@ export const StyledLoginIssue = styled.div`
 
   .issue-nav {
     padding: 20px;
-    border: 2px black solid;
+    border: 2px #1c82fc solid;
     width: 80%;
     margin: 1rem auto;
     align-items: center;
@@ -38,14 +38,14 @@ export const StyledLoginIssue = styled.div`
       width: 200px;
       border-radius: 10px;
       padding: 15px;
-      background-color: rgb(25, 25, 25);
+      background-color: #1c82fc;
       color: #fff;
       font-weight: 600;
 
       :hover {
         background-color: transparent;
-        border: 2px rgb(25, 25, 25) solid;
-        color: rgb(25, 25, 25);
+        border: 2px #1c82fc solid;
+        color: #1c82fc;
       }
     }
   }

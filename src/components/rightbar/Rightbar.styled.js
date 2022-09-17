@@ -6,6 +6,7 @@ export const StyledRightbar = styled.div`
   overflow-x: hidden;
   overflow-y: auto;
   height: 100vh;
+  display: block;
 
   ::-webkit-scrollbar {
     width: 0em;

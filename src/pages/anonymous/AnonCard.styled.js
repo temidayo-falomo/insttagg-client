@@ -1,12 +1,13 @@
 import styled from "styled-components";
 
-export const StyledCard = styled.div`
+export const StyledAnonCard = styled.div`
   width: 400px;
   border-radius: 30px;
   overflow: hidden;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
   padding: 12px;
   position: relative;
+  min-height: 200px;
 
   li {
     font-size: 1.2rem;
@@ -42,6 +43,7 @@ export const StyledCard = styled.div`
     max-height: 180px;
     border-radius: 20px;
     overflow: hidden;
+    margin-bottom: 1rem;
   }
 
   .bookmark {
@@ -81,7 +83,7 @@ export const StyledCard = styled.div`
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    gap: 0.5rem;
+    gap: .5rem;
   }
 
   .dropdown p:hover {

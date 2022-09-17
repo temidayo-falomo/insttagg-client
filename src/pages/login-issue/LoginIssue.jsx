@@ -35,10 +35,10 @@ function LoginIssue() {
             I have created an <Link to="/anonymous">Anonymous Login</Link>, so
             you too can experience the website, albeit at an anonymous level,{" "}
             <Link to="/anonymous">Here It Is . </Link>
-            To make it work especially on IOS(Webkit disables third party
-            cookies by default). Go to settings, then Safari, then togggle off
-            "block all cookies". This site uses cookies to keep users logged in,
-            and i'm too cheap to buy a domain name, FOR NOW 👀.
+            To make it work especially on IOS(Safari disables cookies by
+            default). Go to settings, then Safari, then togggle off "Block all
+            cookies". This site uses web Cookies to keep users logged in, and
+            i'm too cheap to buy a domain name, FOR NOW 👀.
           </p>
         </div>
 
