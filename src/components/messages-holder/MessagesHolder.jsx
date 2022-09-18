@@ -5,12 +5,14 @@ import axios from "axios";
 import { AppContext } from "../../helper/Context";
 import { FiSend } from "react-icons/fi";
 import Loading from "../../pages/loading/Loading";
-import { MdRefresh } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
 import { ImCancelCircle } from "react-icons/im";
 import { TbSend } from "react-icons/tb";
 
 function MessagesHolder() {
+  
+  //States & Context
+
   const { userInfo, userFollowing } = useContext(AppContext);
   const [textsArr, setTextsArr] = useState();
 
@@ -31,9 +33,7 @@ function MessagesHolder() {
 
   let navigate = useNavigate();
 
-  useEffect(() => {
-    getMessages();
-  }, [clickedMessageId, refresh]);
+  // Function to call Messages
 
   const getMessages = () => {
     axios
@@ -47,6 +47,14 @@ function MessagesHolder() {
       .catch((err) => console.error(err));
   };
 
+  //Get Messages On Render
+
+  useEffect(() => {
+    getMessages();
+  }, [clickedMessageId, refresh]);
+
+  //Get Card Parameters Onclick
+
   const handleCard = (param, index, param2) => {
     setClickedMessageId(param);
     setNumber(index);
@@ -54,26 +62,35 @@ function MessagesHolder() {
     setShowBox(true);
   };
 
+  //Loading Screen
+
   if (!userInfo.following[0].name) {
     return <Loading />;
   }
 
+  //Add Message
+
   const handleMessageSubmit = (e) => {
+    e.preventDefault();
+    var time = new Date();
+
+    let realTime = time.toLocaleString("en-US", {
+      hour: "numeric",
+      minute: "numeric",
+      hour12: true,
+    });
+
     const messageData = {
       avatar: userInfo.avatar,
       message: messageText,
-      time:
-        new Date(Date.now()).getHours() +
-        ":" +
-        new Date(Date.now()).getMinutes(),
+      time: realTime,
       senderId: userInfo._id,
       receiverId: clickedMessageId,
       senderUserName: userInfo.firstName,
       receiverUsername: firstMessageName,
     };
 
-    setRefresh(!refresh);
-    e.preventDefault();
+    // setRefresh(!refresh);
 
     axios
       .post(
@@ -83,21 +100,20 @@ function MessagesHolder() {
       .catch((err) => console.error(err));
 
     setMessageText("");
+    setTextsArr([...textsArr, messageData]);
   };
+
+  //Loading Screen
 
   if (loading || !userFollowing) {
     return <Loading />;
   }
 
+  //Navigation
+
   const handleNavigateTo = () => {
     navigate(`/`);
   };
-
-  // userToAddToUserId
-
-  // if (userInfo.following.length === 0) {
-  //   return <h1>You need to follow someone!</h1>;
-  // }
 
   return (
     <StyledMessagesHolder>
@@ -144,7 +160,7 @@ function MessagesHolder() {
           {textsArr.map((data, index) => {
             return (
               <div
-                key={data._id}
+                key={index}
                 className={data.senderId === userInfo._id ? "left" : "right"}
               >
                 <p

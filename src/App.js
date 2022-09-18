@@ -101,11 +101,6 @@ function App() {
     getPosts(skip);
   }, [skip]);
 
-  // document.requestStorageAccess().then(
-  //   () => { console.log('access granted') },
-  //   () => { console.log('access denied') }
-  // );
-
   return (
     <AppContext.Provider
       value={{

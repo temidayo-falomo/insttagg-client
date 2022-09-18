@@ -129,7 +129,7 @@ function SignUp() {
                 type="password"
                 name="password"
                 autoComplete="on"
-                placeholder="Password"
+                placeholder="create password"
                 onChange={(e) => setPassword(e.target.value)}
                 style={{ textTransform: "-moz-initial" }}
                 required

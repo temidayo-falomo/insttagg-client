@@ -43,7 +43,6 @@ function AllUsers() {
             <div
               style={{
                 height: "100vh",
-                // overflow: "auto",
                 paddingBottom: "5rem",
               }}
             >

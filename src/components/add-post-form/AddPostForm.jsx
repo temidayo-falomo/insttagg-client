@@ -7,22 +7,23 @@ import { useEffect } from "react";
 import Loading from "../../pages/loading/Loading";
 
 function AddPostForm() {
+  //Setting Axios to not set Credentials by default, because of security/cors
   axios.defaults.withCredentials = false;
-  const { userInfo } = useContext(AppContext);
 
+  // States And Global Context
+  const { userInfo } = useContext(AppContext);
   const [location, setLocation] = useState("Anywhere");
   const [text, setText] = useState("");
   const [selectedImage, setSelectedImage] = useState(
     "https://i.pinimg.com/736x/a9/d2/ba/a9d2bae0d810b55002e61d89e1e33832.jpg"
   );
-
   const [imageLoading, setImageLoading] = useState();
-
   const [error, setError] = useState(false);
 
+  //Router Navigation Variable
   const navigate = useNavigate();
 
-  // * Object to be passed to mongoDb
+  //Object to be passed to MongoDb
   const postData = {
     avatar: userInfo.avatar,
     location: location,
@@ -33,7 +34,7 @@ function AddPostForm() {
     userDetail: userInfo._id,
   };
 
-  // * Uploads Image To Cloudinary
+  //Uploads Image To Cloudinary
   const uploadImage = async (e) => {
     const types = [
       "image/png",
