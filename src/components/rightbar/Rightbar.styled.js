@@ -24,7 +24,7 @@ export const StyledRightbar = styled.div`
     position: absolute;
     background-color: #fff;
     width: 90%;
-    height: 80vh;
+    height: 75vh;
     bottom: 5%;
     right: 0;
     left: 5%;

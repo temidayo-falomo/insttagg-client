@@ -1,10 +1,15 @@
 import React, { useContext, useState } from "react";
 import { StyledCard } from "./Card.styled";
-import { BsHeart, BsHeartFill, BsShareFill } from "react-icons/bs";
+import { BsHeart, BsHeartFill } from "react-icons/bs";
 import { RiBookmarkFill } from "react-icons/ri";
 import { BiComment } from "react-icons/bi";
-import { MdOutlineMoreVert, MdViewInAr } from "react-icons/md";
-import { AiFillDelete, AiOutlineEdit } from "react-icons/ai";
+import {
+  MdContentCopy,
+  MdFileCopy,
+  MdOutlineMoreVert,
+  MdViewInAr,
+} from "react-icons/md";
+import { AiFillDelete } from "react-icons/ai";
 import { useLocation, useNavigate } from "react-router-dom";
 import { FaRegBookmark } from "react-icons/fa";
 import axios from "axios";
@@ -12,10 +17,12 @@ import { AppContext } from "../../helper/Context";
 import { useEffect } from "react";
 
 function Card(props) {
+  //Conext & States
   const [clicked, setClicked] = useState(false);
   const { userInfo, bookmarks, setBookmarks, generalPosts, setGeneralPosts } =
     useContext(AppContext);
   const [options, setOptions] = useState(false);
+  const [copied, setCopied] = useState(false);
   const [likesArray, setLikesArray] = useState(props.likes);
 
   //Variables Used
@@ -146,6 +153,13 @@ function Card(props) {
     }
   };
 
+  const handleCopyToClipboard = (param) => {
+    navigator.clipboard.writeText(
+      `https://insttagg.herokuapp.com/post/${param}`
+    );
+    setCopied(!copied);
+  };
+
   useEffect(() => {
     handleUpdatePost();
   }, []);
@@ -227,7 +241,14 @@ function Card(props) {
               </div>
             </li>
             <li>
-              <BsShareFill className="pointer" />
+              {!copied ? (
+                <MdContentCopy
+                  className="pointer"
+                  onClick={() => handleCopyToClipboard(props._id)}
+                />
+              ) : (
+                <MdFileCopy />
+              )}
             </li>
           </ul>
 
@@ -294,10 +315,6 @@ function Card(props) {
           <p onClick={handleDeletePost}>
             Delete
             <AiFillDelete />
-          </p>
-          <p>
-            Edit
-            <AiOutlineEdit />
           </p>
         </div>
       )}

@@ -19,9 +19,9 @@ function PostById() {
     setIsLoggedIn(true);
   }, []);
 
-  if (loading) {
-    return <Loading />;
-  }
+  // if (loading) {
+  //   return <Loading />;
+  // }
 
   const handleNavigateToPrev = () => {
     new Promise((myResolve, myReject) => {

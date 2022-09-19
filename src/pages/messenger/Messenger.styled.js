@@ -8,9 +8,9 @@ export const StyledMessenger = styled.aside`
     position: absolute !important;
     top: 0;
     width: 100%;
-    height: 80px !important;
+    height: 90px !important;
     margin: 0 !important;
-    padding: 20px !important;
+    padding: 35px 20px !important;
     border-bottom: 1px gainsboro solid !important;
   }
 
