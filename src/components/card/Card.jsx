@@ -48,7 +48,6 @@ function Card(props) {
         bookmarkData
       )
       .catch((err) => console.error(err));
-    setClicked(true);
 
     setBookmarks([
       ...bookmarks,
@@ -82,6 +81,7 @@ function Card(props) {
         likeData
       )
       .catch((err) => console.error(err));
+    setClicked(true);
 
     setLikesArray([...likesArray, likeData]);
   };
@@ -98,6 +98,7 @@ function Card(props) {
       )
       .then((res) => console.log(res))
       .catch((err) => console.error(err));
+    setClicked(false);
 
     let filtered = likesArray.filter((item) => item.userId !== likeData.userId);
     setLikesArray(filtered);
@@ -201,7 +202,8 @@ function Card(props) {
           <ul className="row">
             {likesArray && (
               <li className="like-btn">
-                {likesArray.some((e) => e.userId === userInfo._id) ? (
+                {clicked ||
+                likesArray.some((e) => e.userId === userInfo._id) ? (
                   <BsHeartFill
                     onClick={handleRemoveLike}
                     className="pointer liked"
@@ -249,9 +251,6 @@ function Card(props) {
             )}
           </div>
         </div>
-
-
-
 
         <div className="row btw card-bar">
           {likesArray && (

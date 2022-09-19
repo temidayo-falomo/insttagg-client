@@ -11,10 +11,6 @@ function AddPost() {
     setIsLoggedIn(true);
   }, []);
 
-  if (loading) {
-    return <Loading />;
-  }
-
   return <StyledAddPost>{userInfo && <AddPostForm />}</StyledAddPost>;
 }
 

@@ -24,6 +24,12 @@ export const StyledAddPostForm = styled.form`
     position: absolute;
     top: 0;
     right: 2rem;
+
+    :hover {
+      background-color: transparent;
+      border: 1px #00a3ff solid;
+      color: #00a3ff;
+    }
   }
 
   span {
@@ -37,6 +43,12 @@ export const StyledAddPostForm = styled.form`
     cursor: pointer;
     font-size: 0.8rem;
     background-color: #000;
+
+    :hover {
+      background-color: transparent;
+      border: 1px #000 solid;
+      color: #000 !important;
+    }
   }
 
   input,

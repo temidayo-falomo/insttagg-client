@@ -10,7 +10,6 @@ import Dashboard from "./pages/dashboard/Dashboard";
 import Login from "./pages/login/Login";
 import SignUp from "./pages/sign-up/SignUp";
 import UserById from "./pages/user-by-id/UserById";
-import Loading from "./pages/loading/Loading";
 import PostById from "./pages/post-by-id/PostById";
 import StoryPage from "./pages/story-page/StoryPage";
 import Messenger from "./pages/messenger/Messenger";
@@ -21,25 +20,20 @@ import LoginIssue from "./pages/login-issue/LoginIssue";
 axios.defaults.withCredentials = true;
 
 function App() {
+  //Global States to be Provided with Context
   const [userInfo, setUserInfo] = useState();
-  const [generalPosts, setGeneralPosts] = useState([]);
   const [bookmarks, setBookmarks] = useState();
   const [loading, setLoading] = useState(true);
   const [skip, setSkip] = useState(10);
-  const [theme, setTheme] = useState("dark");
   const [userFollowing, setUserFollowing] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState();
   const [toggledRightbar, setToggledRightbar] = useState(false);
   const [tokenError, setTokenError] = useState(false);
 
+  //UseNavigate Variable
   let navigate = useNavigate();
 
-  // useEffect(() => {
-  //   if (window.innerWidth > 1030) {
-  //     setToggledRightbar(false);
-  //   }
-  // }, []);
-
+  //User API REQUEST.
   const sendUserRequest = async () => {
     const res = await axios
       .get("https://insta-clone-temidayo.herokuapp.com/api/user", {
@@ -59,30 +53,12 @@ function App() {
     }
   };
 
-  const getPosts = async (param) => {
-    await axios
-      .get(
-        `https://insta-clone-temidayo.herokuapp.com/api/posts/?page=1&limit=${param}`
-      )
-      .then((res) => {
-        setGeneralPosts(res.data.post);
-        setLoading(false);
-      })
-      .catch((err) => console.log(err));
-  };
-
+  //GET USER'S BOOKMARKED POSTS
   const getUserBookmarks = async (param) => {
     const res = await axios.get(
       `https://insta-clone-temidayo.herokuapp.com/api/bookmarks/bookmark/${param}`
     );
     setBookmarks(res.data.bookmark);
-  };
-
-  const handleScroll = (e) => {
-    const { offsetHeight, scrollTop, scrollHeight } = e.target;
-    if (offsetHeight + scrollTop >= scrollHeight) {
-      setSkip(generalPosts.length + 3);
-    }
   };
 
   useEffect(() => {
@@ -97,21 +73,13 @@ function App() {
     }
   }, [isLoggedIn]);
 
-  useEffect(() => {
-    getPosts(skip);
-  }, [skip]);
-
   return (
     <AppContext.Provider
       value={{
         userInfo,
         setUserInfo,
-        generalPosts,
-        setGeneralPosts,
         bookmarks,
         setBookmarks,
-        getPosts,
-        handleScroll,
         userFollowing,
         isLoggedIn,
         setIsLoggedIn,
@@ -120,6 +88,8 @@ function App() {
         setToggledRightbar,
         loading,
         tokenError,
+        skip,
+        setSkip,
       }}
     >
       <div className="App">

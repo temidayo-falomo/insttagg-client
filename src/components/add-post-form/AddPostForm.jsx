@@ -88,8 +88,8 @@ function AddPostForm() {
 
   const getRandomText = () => {
     axios
-      .get("http://metaphorpsum.com/paragraphs/2/1")
-      .then((res) => setText(res.data))
+      .get("https://api.adviceslip.com/advice")
+      .then((res) => setText(res.data.slip.advice))
       .catch((err) => console.error(err));
   };
 
