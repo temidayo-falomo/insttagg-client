@@ -17,10 +17,6 @@ const GlobalStyle = createGlobalStyle`
   body {
     font-family: 'Lato', sans-serif;
     overflow: hidden;
-    /* background: url('https://cdn.dribbble.com/users/1770290/screenshots/6220590/bg_82.gif');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover; */
   }
 
   .App {

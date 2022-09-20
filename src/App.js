@@ -61,6 +61,8 @@ function App() {
     setBookmarks(res.data.bookmark);
   };
 
+  //USEEFFECT TO SET THE USER LOGGED IN STATE TO A BOOLEAN
+
   useEffect(() => {
     if (isLoggedIn) {
       sendUserRequest()
