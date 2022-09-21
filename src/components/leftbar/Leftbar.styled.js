@@ -20,9 +20,9 @@ export const StyledLeftbar = styled.aside`
   }
 
   .active-link {
-    fill: orange;
-    color: orange;
-    outline: orange;
+    fill: #1C82FC;
+    color: #1C82FC;
+    outline: #1C82FC;
   }
 
   @media (max-width: 1030px) {
