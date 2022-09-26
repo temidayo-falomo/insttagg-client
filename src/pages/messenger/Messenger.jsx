@@ -14,7 +14,7 @@ function Messenger() {
     setIsLoggedIn(true);
   }, []);
 
-  if (loading) {
+  if (!userInfo) {
     return <Loading />;
   }
 
@@ -28,9 +28,7 @@ function Messenger() {
               {userInfo && <MessagesHolder />}
             </StyledMessenger>
           ) : (
-            <StyledMessengerError
-            // style={{ backgroundImage: "url(./assets/airplane.gif)" }}
-            >
+            <StyledMessengerError>
               <div className="col center">
                 <h2>Messenger</h2>
                 <Link to="/all-users">
