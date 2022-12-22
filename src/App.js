@@ -36,7 +36,7 @@ function App() {
   //User API REQUEST.
   const sendUserRequest = async () => {
     const res = await axios
-      .get("http://localhost:5600/api/user", {
+      .get("https://insttagg-server.vercel.app/api/user", {
         withCredentials: true,
       })
       .catch((err) => {
@@ -56,7 +56,7 @@ function App() {
   //GET USER'S BOOKMARKED POSTS
   const getUserBookmarks = async (param) => {
     const res = await axios.get(
-      `http://localhost:5600/api/bookmarks/bookmark/${param}`
+      `https://insttagg-server.vercel.app/api/bookmarks/bookmark/${param}`
     );
     setBookmarks(res.data.bookmark);
   };

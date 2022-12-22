@@ -32,11 +32,7 @@ function Login() {
     e.preventDefault();
 
     await axios
-      .post(
-        "https://insta-clone-temidayo.herokuapp.com/api/login",
-        userData,
-        config
-      )
+      .post("https://insttagg-server.vercel.app/api/login", userData, config)
       .then(() => setDisabled(true))
       .then(() => navigate("/"))
       .then(() => window.location.reload())
