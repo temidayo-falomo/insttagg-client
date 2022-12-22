@@ -13,6 +13,30 @@ function UserById() {
     setIsLoggedIn(true);
   }, []);
 
+  // I am trying to create a fill-in information of the month
+  // If otherwise, it logs Error
+
+  let month = prompt("Enter the month: ");
+  switch (month) {
+    case "january":
+    case "February":
+    case "March":
+    case "April":
+    case "May":
+    case "June":
+    case "July":
+    case "August":
+    case "September":
+    case "October":
+    case "November":
+    case "December":
+      console.log("month");
+      break;
+
+    default:
+      console.log("error");
+  }
+
   return (
     <StyledUserById>
       {userInfo && (
@@ -22,7 +46,7 @@ function UserById() {
           <Rightbar />
         </>
       )}
-       <ToggleRightbar />
+      <ToggleRightbar />
     </StyledUserById>
   );
 }

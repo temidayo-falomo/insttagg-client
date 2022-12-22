@@ -36,7 +36,7 @@ function App() {
   //User API REQUEST.
   const sendUserRequest = async () => {
     const res = await axios
-      .get("https://insta-clone-temidayo.herokuapp.com/api/user", {
+      .get("http://localhost:5600/api/user", {
         withCredentials: true,
       })
       .catch((err) => {
@@ -56,7 +56,7 @@ function App() {
   //GET USER'S BOOKMARKED POSTS
   const getUserBookmarks = async (param) => {
     const res = await axios.get(
-      `https://insta-clone-temidayo.herokuapp.com/api/bookmarks/bookmark/${param}`
+      `http://localhost:5600/api/bookmarks/bookmark/${param}`
     );
     setBookmarks(res.data.bookmark);
   };
@@ -71,7 +71,10 @@ function App() {
           setUserFollowing(data.user.following);
           getUserBookmarks(data.user._id);
         })
-        .catch((err) => setTokenError(true));
+        .catch((err) => {
+          setTokenError(true);
+          console.log(err);
+        });
     }
   }, [isLoggedIn]);
 
