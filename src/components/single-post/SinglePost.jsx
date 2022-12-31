@@ -32,10 +32,7 @@ function SinglePost() {
     };
 
     axios
-      .put(
-        "https://insta-clone-temidayo.herokuapp.com/api/posts/like",
-        likeData
-      )
+      .put("https://insttagg-server.vercel.app/api/posts/like", likeData)
       .catch((err) => console.error(err));
     postInfo.likes.push(likeData);
 
@@ -48,10 +45,7 @@ function SinglePost() {
       postId: postInfo._id,
     };
     axios
-      .put(
-        "https://insta-clone-temidayo.herokuapp.com/api/posts/unlike",
-        likeData
-      )
+      .put("https://insttagg-server.vercel.app/api/posts/unlike", likeData)
       .catch((err) => console.error(err));
 
     let filtered = likesArray.filter((item) => item.userId !== likeData.userId);
@@ -60,7 +54,7 @@ function SinglePost() {
 
   const getPostInfo = () => {
     axios
-      .get(`https://insta-clone-temidayo.herokuapp.com/api/posts/${id}`)
+      .get(`https://insttagg-server.vercel.app/api/posts/${id}`)
       .then((res) => {
         setPostInfo(res.data.post);
         setLikesArray(res.data.post.likes);
@@ -112,7 +106,7 @@ function SinglePost() {
 
     axios
       .post(
-        "https://insta-clone-temidayo.herokuapp.com/api/bookmarks/add-bookmark",
+        "https://insttagg-server.vercel.app/api/bookmarks/add-bookmark",
         bookmarkData
       )
       .catch((err) => console.error(err));
@@ -138,7 +132,7 @@ function SinglePost() {
   const handleRemoveBookmark = () => {
     axios
       .delete(
-        `https://insta-clone-temidayo.herokuapp.com/api/bookmarks/remove-bookmark/${postInfo._id}`
+        `https://insttagg-server.vercel.app/api/bookmarks/remove-bookmark/${postInfo._id}`
       )
       .catch((err) => console.error(err));
 

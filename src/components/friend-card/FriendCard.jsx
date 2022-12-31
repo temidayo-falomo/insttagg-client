@@ -18,7 +18,7 @@ function FriendCard(props) {
       userToAddToUserId: props._id,
     };
     axios
-      .put("https://insta-clone-temidayo.herokuapp.com/api/follow", data)
+      .put("https://insttagg-server.vercel.app/api/follow", data)
       .catch((err) => console.error(err));
     setUserInfo({ ...userInfo, following: [...userInfo.following, data] });
   };
@@ -29,7 +29,7 @@ function FriendCard(props) {
       currentUser: userInfo._id,
     };
     axios
-      .put("https://insta-clone-temidayo.herokuapp.com/api/unfollow", data)
+      .put("https://insttagg-server.vercel.app/api/unfollow", data)
       .catch((err) => console.error(err));
     let filtered = userInfo.following.filter(
       (val) => val.userToAddToUserId !== props._id

@@ -42,12 +42,12 @@ function SignUp() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await axios
-      .post("https://insta-clone-temidayo.herokuapp.com/api/signup", userData)
+      .post("https://insttagg-server.vercel.app/api/signup", userData)
       .then(() => setDisabled(true))
       .then(() =>
         axios
           .post(
-            "https://insta-clone-temidayo.herokuapp.com/api/login",
+            "https://insttagg-server.vercel.app/api/login",
             {
               email: email,
               password: password,
@@ -68,9 +68,7 @@ function SignUp() {
       .catch((err) => console.error(err));
   };
 
-  const handleGetRandomPassword = () => {
-    
-  };
+  const handleGetRandomPassword = () => {};
 
   useEffect(() => {
     window.localStorage.setItem("userInfo", JSON.stringify(email));

@@ -15,9 +15,7 @@ function AnonDashboard() {
 
   const getAnonPosts = () => {
     axios
-      .get(
-        "https://insta-clone-temidayo.herokuapp.com/api/posts/?page=1&limit=15"
-      )
+      .get("https://insttagg-server.vercel.app/api/posts/?page=1&limit=15")
       .then((res) => setAnonPosts(res.data.post))
       .then(() => setLoading(true))
       .catch((err) => console.error(err));
@@ -43,8 +41,8 @@ function AnonDashboard() {
             })}
             <div className="infinite-msg">
               <p style={{ textAlign: "center", display: "inline-flex" }}>
-                Infinite scroll is disabled for Anonymous Users.
-                Login to see more posts.
+                Infinite scroll is disabled for Anonymous Users. Login to see
+                more posts.
               </p>
             </div>
           </div>

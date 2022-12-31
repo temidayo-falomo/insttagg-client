@@ -16,7 +16,7 @@ function FriendContent() {
 
   const getFriend = async () => {
     await axios
-      .get(`https://insta-clone-temidayo.herokuapp.com/api/user/${id}`)
+      .get(`https://insttagg-server.vercel.app/api/user/${id}`)
       .then((res) => setFriendObject(res.data.user))
       .catch((err) => console.error(err));
   };
@@ -31,7 +31,7 @@ function FriendContent() {
       userToAddToUserId: friendObject._id,
     };
     axios
-      .put("https://insta-clone-temidayo.herokuapp.com/api/follow", data)
+      .put("https://insttagg-server.vercel.app/api/follow", data)
       .catch((err) => console.error(err));
     setUserInfo({ ...userInfo, following: [...userInfo.following, data] });
   };
@@ -42,7 +42,7 @@ function FriendContent() {
       currentUser: userInfo._id,
     };
     axios
-      .put("https://insta-clone-temidayo.herokuapp.com/api/unfollow", data)
+      .put("https://insttagg-server.vercel.app/api/unfollow", data)
       .catch((err) => console.error(err));
     let filtered = userInfo.following.filter(
       (val) => val.userToAddToUserId !== friendObject._id
@@ -53,7 +53,7 @@ function FriendContent() {
 
   const handleGetUserPosts = () => {
     axios
-      .get(`https://insta-clone-temidayo.herokuapp.com/api/posts/user-posts/${id}`)
+      .get(`https://insttagg-server.vercel.app/api/posts/user-posts/${id}`)
       .then((res) => setUserPosts(res.data.posts))
       .catch((err) => console.error(err));
   };
@@ -104,10 +104,9 @@ function FriendContent() {
               {userPosts.map((data) => {
                 return <Card key={data._id} {...data} />;
               })}
-               {userPosts.length === 0 && <h3>Nothing To See Here...</h3>}
+              {userPosts.length === 0 && <h3>Nothing To See Here...</h3>}
             </div>
           )}
-         
         </>
       )}
     </StyledFriendContent>

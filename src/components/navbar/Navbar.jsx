@@ -18,7 +18,7 @@ function Navbar() {
 
   const getAllUsers = () => {
     axios
-      .get("https://insta-clone-temidayo.herokuapp.com/api/all-users")
+      .get("https://insttagg-server.vercel.app/api/all-users")
       .then((res) => {
         setAllFriends(res.data.users);
         setLoading(false);

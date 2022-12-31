@@ -10,7 +10,6 @@ import { ImCancelCircle } from "react-icons/im";
 import { TbSend } from "react-icons/tb";
 
 function MessagesHolder() {
-  
   //States & Context
 
   const { userInfo, userFollowing } = useContext(AppContext);
@@ -93,10 +92,7 @@ function MessagesHolder() {
     // setRefresh(!refresh);
 
     axios
-      .post(
-        "https://insta-clone-temidayo.herokuapp.com/api/messages/",
-        messageData
-      )
+      .post("https://insttagg-server.vercel.app/api/messages/", messageData)
       .catch((err) => console.error(err));
 
     setMessageText("");
