@@ -47,7 +47,7 @@ function EditInfo(props) {
     e.preventDefault();
     axios
       .put(
-        `https://insta-clone-temidayo.herokuapp.com/api/edit-user/${userInfo._id}`,
+        `https://insttagg-server.vercel.app/api/edit-user/${userInfo._id}`,
         userData
       )
       .then(() => props.setShowEdit(!props.showEdit))

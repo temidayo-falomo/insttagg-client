@@ -76,7 +76,7 @@ function AddPostForm() {
 
     axios
       .post(
-        "https://insta-clone-temidayo.herokuapp.com/api/posts/upload-post",
+        "https://insttagg-server.vercel.app/api/posts/upload-post",
         postData
       )
       .then(() => navigate("/"))

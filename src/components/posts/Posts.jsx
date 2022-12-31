@@ -11,7 +11,7 @@ function Posts(props) {
   const getPosts = async (param) => {
     await axios
       .get(
-        `https://insta-clone-temidayo.herokuapp.com/api/posts/?page=1&limit=${param}`
+        `https://insttagg-server.vercel.app/api/posts/?page=1&limit=${param}`
       )
       .then((res) => {
         props.setGeneralPosts(res.data.post);

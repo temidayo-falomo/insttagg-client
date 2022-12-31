@@ -48,10 +48,10 @@ function Card(props) {
       postId: props._id,
       saved: true,
     };
-
+    
     axios
       .post(
-        "https://insta-clone-temidayo.herokuapp.com/api/bookmarks/add-bookmark",
+        "https://insttagg-server.vercel.app/api/bookmarks/add-bookmark",
         bookmarkData
       )
       .catch((err) => console.error(err));
@@ -83,10 +83,7 @@ function Card(props) {
     };
 
     axios
-      .put(
-        "https://insta-clone-temidayo.herokuapp.com/api/posts/like",
-        likeData
-      )
+      .put("https://insttagg-server.vercel.app/api/posts/like", likeData)
       .catch((err) => console.error(err));
     setClicked(true);
 
@@ -99,10 +96,7 @@ function Card(props) {
       postId: props._id,
     };
     axios
-      .put(
-        "https://insta-clone-temidayo.herokuapp.com/api/posts/unlike",
-        likeData
-      )
+      .put("https://insttagg-server.vercel.app/api/posts/unlike", likeData)
       .then((res) => console.log(res))
       .catch((err) => console.error(err));
     setClicked(false);
@@ -118,7 +112,7 @@ function Card(props) {
   const handleDeletePost = () => {
     axios
       .delete(
-        `https://insta-clone-temidayo.herokuapp.com/api/posts/delete/${props._id}`
+        `https://insttagg-server.vercel.app/api/posts/delete/${props._id}`
       )
       .catch((err) => console.error(err));
 
@@ -129,7 +123,7 @@ function Card(props) {
   const handleRemoveBookmark = (param) => {
     axios
       .delete(
-        `https://insta-clone-temidayo.herokuapp.com/api/bookmarks/remove-bookmark/${param}`
+        `https://insttagg-server.vercel.app/api/bookmarks/remove-bookmark/${param}`
       )
       .catch((err) => console.error(err));
 
@@ -145,7 +139,7 @@ function Card(props) {
 
       axios
         .put(
-          `https://insta-clone-temidayo.herokuapp.com/api/posts/edit-post/${props._id}`,
+          `https://insttagg-server.vercel.app/api/posts/edit-post/${props._id}`,
           newImage
         )
         .catch((err) => console.log(err));
@@ -155,7 +149,7 @@ function Card(props) {
 
   const handleCopyToClipboard = (param) => {
     navigator.clipboard.writeText(
-      `https://insttagg.herokuapp.com/post/${param}`
+      `https://insttagg-server.vercel.app/post/${param}`
     );
     setCopied(!copied);
   };
