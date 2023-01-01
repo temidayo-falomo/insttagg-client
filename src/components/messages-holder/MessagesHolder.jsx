@@ -37,7 +37,7 @@ function MessagesHolder() {
   const getMessages = () => {
     axios
       .get(
-        `https://insta-clone-temidayo.herokuapp.com/api/messages/${userInfo._id}/${clickedMessageId}`
+        `https://insttagg-server.vercel.app/api/messages/${userInfo._id}/${clickedMessageId}`
       )
       .then((res) => {
         setTextsArr(res.data.userMessage);
@@ -140,10 +140,9 @@ function MessagesHolder() {
 
       <div className={showBox ? "right-div" : "none"}>
         <div className="top-bar row btw">
-          <div className="row center">
-            To:{" "}
+          <div className="row center" style={{ gap: "0.5rem" }}>
+            <span>To : </span>
             <h4 className="pointer" onClick={handleNavigateTo}>
-              {" "}
               {clickedMessageName}
             </h4>
           </div>
